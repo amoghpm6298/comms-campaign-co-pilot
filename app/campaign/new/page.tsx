@@ -608,12 +608,17 @@ function CampaignBuilder() {
 
               <p className="text-[11px] font-semibold uppercase tracking-wide mb-2" style={{ color: "var(--body-text)" }}>What&apos;s your goal?</p>
               <div className="space-y-1.5">
-                {[
+                {(selectedIssuer?.slug === "axis-bank" ? [
+                  "Activate new Flipkart Axis Bank cards",
+                  "Drive festive spend on Ace cards",
+                  "Convert outstanding to EMI for high-utilization customers",
+                  "Re-engage dormant Magnus cardholders",
+                ] : [
                   "Convert outstanding balance to EMI",
                   "Drive EMI conversion for high-utilization customers",
                   "Re-engage customers with past EMI conversions",
                   "Target high outstanding balance customers for EMI",
-                ].map((s) => (
+                ]).map((s) => (
                   <button key={s} onClick={() => send(s)} className="w-full text-left text-[12px] px-3.5 py-2.5 rounded-lg border hover:bg-gray-50 transition-colors" style={{ borderColor: "#e5e7eb", color: "var(--navy)" }}>
                     {s}
                   </button>

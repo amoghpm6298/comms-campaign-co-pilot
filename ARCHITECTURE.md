@@ -34,7 +34,7 @@
 - All data (datasets, templates, campaigns) is scoped to the selected issuer
 - Switching issuer re-fetches all list data instantly via React context (`AppProvider`) — no page reload
 - Selected issuer persisted in `localStorage` across sessions
-- Seeded issuers: **Demo Bank** (has datasets + templates) and **AmazaBank** (empty — for multi-tenancy demo)
+- Seeded issuers: **Demo Bank** (generic datasets + templates) and **Axis Bank** (Axis-specific card types: Flipkart Axis Bank, Ace, Magnus, Privilege, MY Zone + own datasets/templates)
 - User creation is backend-only (no self-signup)
 - User can have different roles per issuer (admin, marketer, viewer)
 

@@ -74,6 +74,15 @@ const DATASETS: Record<string, { title: string; type: "data" | "exclusion"; file
   "seed-fraud_list.csv": { title: "Fraud Flagged", type: "exclusion", fileName: "fraud_list.csv" },
   "seed-cooling_off_list.csv": { title: "Cooling Off Period", type: "exclusion", fileName: "cooling_off_list.csv" },
   "seed-complaint_list.csv": { title: "Recent Complaints", type: "exclusion", fileName: "complaint_list.csv" },
+  // Axis Bank Seed IDs
+  "axis-seed-customers_axis.csv": { title: "Customer Master", type: "data", fileName: "customers_axis.csv" },
+  "axis-seed-transactions.csv": { title: "Transaction History", type: "data", fileName: "transactions.csv" },
+  "axis-seed-emi_eligibility.csv": { title: "EMI Eligibility", type: "data", fileName: "emi_eligibility.csv" },
+  "axis-seed-npa_list.csv": { title: "NPA List", type: "exclusion", fileName: "npa_list.csv" },
+  "axis-seed-dnc_list.csv": { title: "DNC Registry", type: "exclusion", fileName: "dnc_list.csv" },
+  "axis-seed-fraud_list.csv": { title: "Fraud Flagged", type: "exclusion", fileName: "fraud_list.csv" },
+  "axis-seed-cooling_off_list.csv": { title: "Cooling Off Period", type: "exclusion", fileName: "cooling_off_list.csv" },
+  "axis-seed-complaint_list.csv": { title: "Recent Complaints", type: "exclusion", fileName: "complaint_list.csv" },
 };
 
 // --- Tool Implementations ---

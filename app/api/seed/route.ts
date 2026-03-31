@@ -17,8 +17,8 @@ export async function GET() {
     });
 
     // Second issuer
-    await prisma.issuer.create({
-      data: { name: "AmazaBank", slug: "amaza-bank", config: JSON.stringify({ timezone: "Asia/Kolkata" }) },
+    const axisBank = await prisma.issuer.create({
+      data: { name: "Axis Bank", slug: "axis-bank", config: JSON.stringify({ timezone: "Asia/Kolkata" }) },
     });
 
     // User
@@ -58,6 +58,64 @@ export async function GET() {
           columns: JSON.stringify(ds.columns),
           status: "enabled",
           processingStatus: "successful",
+          createdBy: user.id,
+        },
+      });
+    }
+
+    // Axis Bank Datasets (own customer file, shared transactions/EMI/exclusions)
+    const axisDatasets = [
+      { title: "Customer Master", description: "Axis card holders with card tier, demographics", type: "data", fileName: "customers_axis.csv", fileSize: 5700000, rowCount: 50000, columns: ["customer_id","card_type","issue_date","activation_status","activation_date","credit_limit","phone","email","whatsapp_opted_in","push_enabled","preferred_language"] },
+      { title: "Transaction History", description: "6 months of card transactions", type: "data", fileName: "transactions.csv", fileSize: 41000000, rowCount: 857587, columns: ["customer_id","txn_date","txn_amount","mcc_category","merchant_name","emi_converted"] },
+      { title: "EMI Eligibility", description: "Outstanding amounts, utilization, EMI signals", type: "data", fileName: "emi_eligibility.csv", fileSize: 1800000, rowCount: 50000, columns: ["customer_id","outstanding_amount","current_utilization","min_due","payment_day","days_to_payment","existing_emi_count","past_emi_conversions","emi_eligible","max_emi_tenure"] },
+      { title: "NPA List", description: "Non-performing asset flagged", type: "exclusion", fileName: "npa_list.csv", fileSize: 34000, rowCount: 1445, columns: ["customer_id","npa_date","npa_category"] },
+      { title: "DNC Registry", description: "Do-not-contact registry", type: "exclusion", fileName: "dnc_list.csv", fileSize: 109000, rowCount: 3972, columns: ["customer_id","dnc_source","dnc_date"] },
+      { title: "Fraud Flagged", description: "Suspicious activity flagged", type: "exclusion", fileName: "fraud_list.csv", fileSize: 23000, rowCount: 541, columns: ["customer_id","flag_date","fraud_type","severity"] },
+      { title: "Cooling Off Period", description: "RBI cooling-off after closure", type: "exclusion", fileName: "cooling_off_list.csv", fileSize: 48000, rowCount: 1053, columns: ["customer_id","request_date","request_type","cooling_off_end"] },
+      { title: "Recent Complaints", description: "Open or recent complaints", type: "exclusion", fileName: "complaint_list.csv", fileSize: 33000, rowCount: 785, columns: ["customer_id","complaint_date","complaint_type","status"] },
+    ];
+
+    for (const ds of axisDatasets) {
+      await prisma.dataset.create({
+        data: {
+          id: `axis-seed-${ds.fileName}`,
+          issuerId: axisBank.id,
+          title: ds.title,
+          description: ds.description,
+          type: ds.type,
+          fileName: ds.fileName,
+          fileSize: ds.fileSize,
+          rowCount: ds.rowCount,
+          columns: JSON.stringify(ds.columns),
+          status: "enabled",
+          processingStatus: "successful",
+          createdBy: user.id,
+        },
+      });
+    }
+
+    // Axis Bank Templates
+    const axisTemplates: { title: string; channel: string; type: string; body: string; subject?: string; dltTemplateId?: string }[] = [
+      { title: "EMI Convert Urgency", channel: "SMS", type: "promotional", body: "Payment due — convert to EMI", dltTemplateId: "1107161234567890" },
+      { title: "EMI Convert Benefit", channel: "SMS", type: "promotional", body: "Split into easy EMI", dltTemplateId: "1107161234567891" },
+      { title: "Card Activation Reminder", channel: "SMS", type: "promotional", body: "Activate your new Axis card today", dltTemplateId: "1107161234567896" },
+      { title: "EMI Retarget", channel: "WhatsApp", type: "promotional", body: "Complete your EMI conversion" },
+      { title: "Festive Spend Nudge", channel: "WhatsApp", type: "promotional", body: "Festive season rewards on your Axis card" },
+      { title: "EMI Email", channel: "Email", type: "promotional", body: "Convert outstanding to EMI", subject: "EMI options for your Axis card" },
+      { title: "Card Activation Email", channel: "Email", type: "promotional", body: "Welcome to Axis — activate your card", subject: "Your new Axis card is ready" },
+    ];
+
+    for (const t of axisTemplates) {
+      await prisma.template.create({
+        data: {
+          issuerId: axisBank.id,
+          title: t.title,
+          channel: t.channel,
+          type: t.type,
+          body: t.body,
+          subject: t.subject || null,
+          dltTemplateId: t.dltTemplateId || null,
+          status: "approved",
           createdBy: user.id,
         },
       });

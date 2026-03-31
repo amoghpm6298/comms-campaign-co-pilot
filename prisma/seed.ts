@@ -32,16 +32,16 @@ async function main() {
   console.log(`User: ${user.email} (${user.id})`);
 
   // --- Second Issuer ---
-  const issuer2 = await prisma.issuer.upsert({
-    where: { slug: "amaza-bank" },
+  const axisBank = await prisma.issuer.upsert({
+    where: { slug: "axis-bank" },
     update: {},
     create: {
-      name: "AmazaBank",
-      slug: "amaza-bank",
+      name: "Axis Bank",
+      slug: "axis-bank",
       config: JSON.stringify({ timezone: "Asia/Kolkata" }),
     },
   });
-  console.log(`Issuer: ${issuer2.name} (${issuer2.id})`);
+  console.log(`Issuer: ${axisBank.name} (${axisBank.id})`);
 
   // --- User-Issuer (Demo Bank) ---
   await prisma.userIssuer.upsert({
@@ -54,13 +54,13 @@ async function main() {
     },
   });
 
-  // --- User-Issuer (AmazaBank) ---
+  // --- User-Issuer (Axis Bank) ---
   await prisma.userIssuer.upsert({
-    where: { userId_issuerId: { userId: user.id, issuerId: issuer2.id } },
+    where: { userId_issuerId: { userId: user.id, issuerId: axisBank.id } },
     update: {},
     create: {
       userId: user.id,
-      issuerId: issuer2.id,
+      issuerId: axisBank.id,
       role: "admin",
     },
   });
@@ -97,7 +97,41 @@ async function main() {
       },
     });
   }
-  console.log(`Datasets: ${datasets.length} seeded`);
+  console.log(`Datasets: ${datasets.length} seeded for Demo Bank`);
+
+  // --- Axis Bank Datasets ---
+  const axisDatasets = [
+    { title: "Customer Master", description: "Axis card holders with card tier (Flipkart, Ace, Magnus, Privilege, MY Zone)", type: "data", fileName: "customers_axis.csv", fileSize: 5700000, rowCount: 50000, columns: ["customer_id","card_type","issue_date","activation_status","activation_date","credit_limit","phone","email","whatsapp_opted_in","push_enabled","preferred_language"] },
+    { title: "Transaction History", description: "6 months of card transactions with MCC categories and merchant details", type: "data", fileName: "transactions.csv", fileSize: 41000000, rowCount: 857587, columns: ["customer_id","txn_date","txn_amount","mcc_category","merchant_name","emi_converted"] },
+    { title: "EMI Eligibility", description: "Outstanding amounts, utilization, payment dates, and EMI propensity signals", type: "data", fileName: "emi_eligibility.csv", fileSize: 1800000, rowCount: 50000, columns: ["customer_id","outstanding_amount","current_utilization","min_due","payment_day","days_to_payment","existing_emi_count","past_emi_conversions","emi_eligible","max_emi_tenure"] },
+    { title: "NPA List", description: "Non-performing asset flagged customers", type: "exclusion", fileName: "npa_list.csv", fileSize: 34000, rowCount: 1445, columns: ["customer_id","npa_date","npa_category"] },
+    { title: "DNC Registry", description: "Do-not-contact registry — TRAI, internal, and customer requests", type: "exclusion", fileName: "dnc_list.csv", fileSize: 109000, rowCount: 3972, columns: ["customer_id","dnc_source","dnc_date"] },
+    { title: "Fraud Flagged", description: "Customers flagged for suspicious activity or identity mismatch", type: "exclusion", fileName: "fraud_list.csv", fileSize: 23000, rowCount: 541, columns: ["customer_id","flag_date","fraud_type","severity"] },
+    { title: "Cooling Off Period", description: "Customers in RBI-mandated cooling-off after closure or downgrade request", type: "exclusion", fileName: "cooling_off_list.csv", fileSize: 48000, rowCount: 1053, columns: ["customer_id","request_date","request_type","cooling_off_end"] },
+    { title: "Recent Complaints", description: "Customers with open or recent complaints", type: "exclusion", fileName: "complaint_list.csv", fileSize: 33000, rowCount: 785, columns: ["customer_id","complaint_date","complaint_type","status"] },
+  ];
+
+  for (const ds of axisDatasets) {
+    await prisma.dataset.upsert({
+      where: { id: `axis-seed-${ds.fileName}` },
+      update: {},
+      create: {
+        id: `axis-seed-${ds.fileName}`,
+        issuerId: axisBank.id,
+        title: ds.title,
+        description: ds.description,
+        type: ds.type,
+        fileName: ds.fileName,
+        fileSize: ds.fileSize,
+        rowCount: ds.rowCount,
+        columns: JSON.stringify(ds.columns),
+        status: "enabled",
+        processingStatus: "successful",
+        createdBy: user.id,
+      },
+    });
+  }
+  console.log(`Datasets: ${axisDatasets.length} seeded for Axis Bank`);
 
   // --- Templates ---
   const templates = [
