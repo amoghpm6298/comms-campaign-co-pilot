@@ -94,3 +94,5 @@ export async function GET() {
     return NextResponse.json({ error: "Seed failed", details: String(err) }, { status: 500 });
   }
 }
+
+export const dynamic = 'force-dynamic';
