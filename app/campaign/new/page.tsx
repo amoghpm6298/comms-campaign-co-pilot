@@ -212,6 +212,9 @@ function CampaignBuilder() {
   const [selectedSendNode, setSelectedSendNode] = useState<SendNodeInfo | null>(null);
   const [templateAssignments, setTemplateAssignments] = useState<Record<string, string>>({});
 
+  // DB data
+  const [dbDatasets, setDbDatasets] = useState<{ id: string; title: string; type: string; rowCount: number }[]>([]);
+
   // v2 wave state
   const [campaignMode, setCampaignMode] = useState<"v1" | "v2">("v2"); // unified — all new campaigns use waves
   const [waves, setWaves] = useState<WaveData[]>([]);
@@ -284,9 +287,13 @@ function CampaignBuilder() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // Fetch templates for assignment dropdown
+  // Fetch datasets + templates for the selected issuer
   useEffect(() => {
     if (!selectedIssuer) return;
+    fetch(`/api/datasets?issuerId=${selectedIssuer.id}`)
+      .then((r) => r.json())
+      .then((data) => setDbDatasets((data.datasets || []).map((d: { id: string; title: string; type: string; rowCount: number }) => ({ id: d.id, title: d.title, type: d.type, rowCount: d.rowCount }))))
+      .catch(() => {});
     fetch(`/api/templates?issuerId=${selectedIssuer.id}`)
       .then((r) => r.json())
       .then((data) => setDbTemplates((data.templates || []).map((t: { id: string; title: string; channel: string }) => ({ id: t.id, title: t.title, channel: t.channel }))))
@@ -564,38 +571,39 @@ function CampaignBuilder() {
                 <p className="text-sm" style={{ color: "var(--navy)" }}>Let&apos;s build a campaign. Select datasets and tell me your goal.</p>
               </div>
 
-              {/* Dataset selector */}
+              {/* Dataset selector — from DB */}
               <div className="mb-4">
-                <p className="text-[11px] font-semibold uppercase tracking-wide mb-2" style={{ color: "var(--body-text)" }}>Data</p>
-                <div className="space-y-1.5 mb-3">
-                  {[
-                    { name: "Customer Master", rows: "50K" },
-                    { name: "Transaction History", rows: "857K" },
-                    { name: "EMI Eligibility", rows: "50K" },
-                  ].map((ds) => (
-                    <label key={ds.name} className="flex items-center gap-2.5 px-3 py-2 rounded-lg border cursor-pointer hover:bg-gray-50" style={{ borderColor: "#e5e7eb" }}>
-                      <input type="checkbox" defaultChecked className="w-3.5 h-3.5 rounded accent-[#0F1235]" />
-                      <span className="text-[12px] font-medium flex-1" style={{ color: "var(--navy)" }}>{ds.name}</span>
-                      <span className="text-[10px]" style={{ color: "var(--body-text)" }}>{ds.rows}</span>
-                    </label>
-                  ))}
-                </div>
-                <p className="text-[11px] font-semibold uppercase tracking-wide mb-2" style={{ color: "var(--body-text)" }}>Exclusion Lists</p>
-                <div className="space-y-1.5 mb-4">
-                  {[
-                    { name: "NPA List", rows: "1.4K" },
-                    { name: "DNC Registry", rows: "3.9K" },
-                    { name: "Fraud Flagged", rows: "541" },
-                    { name: "Cooling Off", rows: "1K" },
-                    { name: "Complaints", rows: "785" },
-                  ].map((ds) => (
-                    <label key={ds.name} className="flex items-center gap-2.5 px-3 py-2 rounded-lg border cursor-pointer hover:bg-gray-50" style={{ borderColor: "rgba(229,83,75,0.12)" }}>
-                      <input type="checkbox" defaultChecked className="w-3.5 h-3.5 rounded accent-[#0F1235]" />
-                      <span className="text-[12px] font-medium flex-1" style={{ color: "var(--navy)" }}>{ds.name}</span>
-                      <span className="text-[10px]" style={{ color: "var(--error-red)" }}>{ds.rows}</span>
-                    </label>
-                  ))}
-                </div>
+                {dbDatasets.filter(d => d.type === "data").length > 0 && (
+                  <>
+                    <p className="text-[11px] font-semibold uppercase tracking-wide mb-2" style={{ color: "var(--body-text)" }}>Data</p>
+                    <div className="space-y-1.5 mb-3">
+                      {dbDatasets.filter(d => d.type === "data").map((ds) => (
+                        <label key={ds.id} className="flex items-center gap-2.5 px-3 py-2 rounded-lg border cursor-pointer hover:bg-gray-50" style={{ borderColor: "#e5e7eb" }}>
+                          <input type="checkbox" defaultChecked className="w-3.5 h-3.5 rounded accent-[#0F1235]" />
+                          <span className="text-[12px] font-medium flex-1" style={{ color: "var(--navy)" }}>{ds.title}</span>
+                          <span className="text-[10px] font-mono" style={{ color: "var(--body-text)" }}>{ds.rowCount >= 1000 ? `${(ds.rowCount / 1000).toFixed(0)}K` : ds.rowCount}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </>
+                )}
+                {dbDatasets.filter(d => d.type === "exclusion").length > 0 && (
+                  <>
+                    <p className="text-[11px] font-semibold uppercase tracking-wide mb-2" style={{ color: "var(--body-text)" }}>Exclusion Lists</p>
+                    <div className="space-y-1.5 mb-4">
+                      {dbDatasets.filter(d => d.type === "exclusion").map((ds) => (
+                        <label key={ds.id} className="flex items-center gap-2.5 px-3 py-2 rounded-lg border cursor-pointer hover:bg-gray-50" style={{ borderColor: "rgba(229,83,75,0.12)" }}>
+                          <input type="checkbox" defaultChecked className="w-3.5 h-3.5 rounded accent-[#0F1235]" />
+                          <span className="text-[12px] font-medium flex-1" style={{ color: "var(--navy)" }}>{ds.title}</span>
+                          <span className="text-[10px] font-mono" style={{ color: "var(--error-red)" }}>{ds.rowCount >= 1000 ? `${(ds.rowCount / 1000).toFixed(1)}K` : ds.rowCount}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </>
+                )}
+                {dbDatasets.length === 0 && (
+                  <p className="text-[11px] py-4 text-center" style={{ color: "#9ca3af" }}>No datasets available for this issuer</p>
+                )}
               </div>
 
               <p className="text-[11px] font-semibold uppercase tracking-wide mb-2" style={{ color: "var(--body-text)" }}>What&apos;s your goal?</p>
