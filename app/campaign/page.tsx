@@ -96,7 +96,10 @@ export default function CampaignsPage() {
                       className="border-t cursor-pointer hover:bg-gray-50/50 transition-colors"
                       style={{ borderColor: "var(--border)" }}
                       onClick={() => {
-                        router.push(`/campaign/new?id=${c.id}`);
+                        const dest = c.status === "live" || c.status === "scheduled"
+                          ? `/campaign/view?id=${c.id}`
+                          : `/campaign/new?id=${c.id}`;
+                        router.push(dest);
                       }}
                     >
                       <td className="px-5 py-3.5" onClick={(e) => e.stopPropagation()}>
