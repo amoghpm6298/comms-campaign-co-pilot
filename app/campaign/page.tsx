@@ -96,7 +96,7 @@ export default function CampaignsPage() {
                       className="border-t cursor-pointer hover:bg-gray-50/50 transition-colors"
                       style={{ borderColor: "var(--border)" }}
                       onClick={() => {
-                        const dest = c.status === "live" || c.status === "scheduled"
+                        const dest = c.status === "live" || c.status === "scheduled" || c.status === "completed"
                           ? `/campaign/view?id=${c.id}`
                           : `/campaign/new?id=${c.id}`;
                         router.push(dest);
