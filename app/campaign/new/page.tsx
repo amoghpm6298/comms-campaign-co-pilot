@@ -117,9 +117,6 @@ function WaveDetail({ wave, journeyNodes, onSendNodeClick, selectedSendNodeId, t
               Execute Wave
             </button>
           )}
-          {wave.status === "live" && (
-            <span className="text-[9px] font-mono" style={{ color: "#9ca3af" }}>Running</span>
-          )}
         </div>
       </div>
 
@@ -559,7 +556,6 @@ function CampaignBuilder() {
           <div className="flex items-center gap-2">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" strokeWidth="2"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z" /></svg>
             <span className="text-[12px] font-semibold" style={{ color: "#0f1235" }}>Co-pilot</span>
-            {loading && <span className="text-[9px] animate-pulse" style={{ color: "var(--purple)" }}>Thinking...</span>}
           </div>
           <Link href="/campaign" className="text-[10px] px-2 py-1 rounded border transition-colors hover:bg-gray-50" style={{ color: "#6b7280", borderColor: "#e5e7eb" }}>Back</Link>
         </div>
