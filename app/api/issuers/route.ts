@@ -30,7 +30,7 @@ export async function GET(req: NextRequest) {
         await prisma.dataset.create({ data: { id: `seed-${ds.fileName}`, issuerId: issuer.id, title: ds.title, description: "", type: ds.type, fileName: ds.fileName, fileSize: ds.fileSize, rowCount: ds.rowCount, columns: JSON.stringify(ds.columns), status: "enabled", processingStatus: "successful", createdBy: user.id } });
       }
 
-      const templates = [
+      const templates: { title: string; channel: string; type: string; body: string; subject?: string; dltTemplateId?: string }[] = [
         { title: "EMI Convert Urgency", channel: "SMS", type: "promotional", body: "Payment due soon — convert to EMI", dltTemplateId: "1107161234567890" },
         { title: "EMI Convert Benefit", channel: "SMS", type: "promotional", body: "Split into easy EMI", dltTemplateId: "1107161234567891" },
         { title: "EMI Retarget", channel: "WhatsApp", type: "promotional", body: "Complete your EMI conversion" },
@@ -38,7 +38,7 @@ export async function GET(req: NextRequest) {
         { title: "EMI Email", channel: "Email", type: "promotional", body: "Convert outstanding to EMI", subject: "EMI options" },
       ];
       for (const t of templates) {
-        await prisma.template.create({ data: { issuerId: issuer.id, title: t.title, channel: t.channel, type: t.type, body: t.body, subject: (t as Record<string,string>).subject || null, dltTemplateId: (t as Record<string,string>).dltTemplateId || null, status: "approved", createdBy: user.id } });
+        await prisma.template.create({ data: { issuerId: issuer.id, title: t.title, channel: t.channel, type: t.type, body: t.body, subject: t.subject || null, dltTemplateId: t.dltTemplateId || null, status: "approved", createdBy: user.id } });
       }
 
       return NextResponse.json({ message: "Seeded!", datasets: datasets.length, templates: templates.length });

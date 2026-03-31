@@ -64,12 +64,12 @@ export async function GET() {
     }
 
     // Templates
-    const templates = [
-      { title: "EMI Convert Urgency", channel: "SMS", type: "promotional", body: "{name}, payment due in {days} days. Convert to EMI →", dltTemplateId: "1107161234567890" },
-      { title: "EMI Convert Benefit", channel: "SMS", type: "promotional", body: "Don't pay full amount. Split into EMI →", dltTemplateId: "1107161234567891" },
-      { title: "EMI Retarget", channel: "WhatsApp", type: "promotional", body: "Hey {name}! You checked EMI options. Complete now →" },
-      { title: "EMI Welcome", channel: "WhatsApp", type: "promotional", body: "Hi {name}! Your outstanding is eligible for EMI →" },
-      { title: "EMI Activation Email", channel: "Email", type: "promotional", body: "Dear {name}, convert your outstanding to easy EMI →", subject: "EMI options for your outstanding" },
+    const templates: { title: string; channel: string; type: string; body: string; subject?: string; dltTemplateId?: string }[] = [
+      { title: "EMI Convert Urgency", channel: "SMS", type: "promotional", body: "Payment due — convert to EMI", dltTemplateId: "1107161234567890" },
+      { title: "EMI Convert Benefit", channel: "SMS", type: "promotional", body: "Split into easy EMI", dltTemplateId: "1107161234567891" },
+      { title: "EMI Retarget", channel: "WhatsApp", type: "promotional", body: "Complete your EMI conversion" },
+      { title: "EMI Welcome", channel: "WhatsApp", type: "promotional", body: "Your outstanding is eligible for EMI" },
+      { title: "EMI Email", channel: "Email", type: "promotional", body: "Convert outstanding to EMI", subject: "EMI options" },
     ];
 
     for (const t of templates) {
@@ -80,8 +80,8 @@ export async function GET() {
           channel: t.channel,
           type: t.type,
           body: t.body,
-          subject: (t as Record<string, string>).subject || null,
-          dltTemplateId: (t as Record<string, string>).dltTemplateId || null,
+          subject: t.subject || null,
+          dltTemplateId: t.dltTemplateId || null,
           status: "approved",
           createdBy: user.id,
         },
