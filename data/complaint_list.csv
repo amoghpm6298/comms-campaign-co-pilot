@@ -1,0 +1,786 @@
+customer_id,complaint_date,complaint_type,status
+C10110,2026-03-17,Fee Complaint,Open
+C10167,2026-03-15,Unauthorized Charge,Resolved
+C10184,2026-03-23,Fee Complaint,Open
+C10219,2026-03-23,Billing Dispute,Open
+C10273,2026-03-20,Billing Dispute,Resolved
+C10374,2026-03-23,Unauthorized Charge,Open
+C10407,2026-03-14,Unauthorized Charge,Open
+C10414,2026-03-17,Billing Dispute,Open
+C10564,2026-03-15,Service Issue,Under Review
+C10647,2026-03-19,Unauthorized Charge,Resolved
+C10717,2026-03-21,Billing Dispute,Under Review
+C10760,2026-03-18,Billing Dispute,Under Review
+C10817,2026-03-19,Fee Complaint,Open
+C10965,2026-03-13,Unauthorized Charge,Resolved
+C11025,2026-03-23,Fee Complaint,Resolved
+C11095,2026-03-20,Billing Dispute,Open
+C11114,2026-03-23,Fee Complaint,Open
+C11134,2026-03-12,Billing Dispute,Open
+C11185,2026-03-11,Unauthorized Charge,Open
+C11222,2026-03-14,Unauthorized Charge,Under Review
+C11284,2026-03-16,Service Issue,Open
+C11356,2026-03-14,Unauthorized Charge,Open
+C11503,2026-03-15,Service Issue,Under Review
+C11546,2026-03-23,Billing Dispute,Open
+C11559,2026-03-10,Unauthorized Charge,Open
+C11572,2026-03-16,Fee Complaint,Under Review
+C11717,2026-03-16,Fee Complaint,Open
+C11808,2026-03-16,Fee Complaint,Under Review
+C11879,2026-03-11,Billing Dispute,Open
+C11921,2026-03-14,Service Issue,Open
+C12012,2026-03-10,Service Issue,Open
+C12032,2026-03-10,Service Issue,Under Review
+C12037,2026-03-23,Unauthorized Charge,Resolved
+C12074,2026-03-17,Billing Dispute,Open
+C12075,2026-03-23,Unauthorized Charge,Open
+C12086,2026-03-13,Billing Dispute,Resolved
+C12132,2026-03-12,Unauthorized Charge,Open
+C12169,2026-03-19,Fee Complaint,Open
+C12311,2026-03-19,Service Issue,Open
+C12488,2026-03-19,Billing Dispute,Under Review
+C12546,2026-03-16,Billing Dispute,Open
+C12655,2026-03-13,Service Issue,Resolved
+C12735,2026-03-21,Service Issue,Open
+C12797,2026-03-22,Billing Dispute,Resolved
+C13018,2026-03-10,Unauthorized Charge,Under Review
+C13148,2026-03-23,Fee Complaint,Open
+C13163,2026-03-12,Billing Dispute,Open
+C13264,2026-03-22,Fee Complaint,Resolved
+C13288,2026-03-23,Service Issue,Resolved
+C13446,2026-03-17,Fee Complaint,Resolved
+C13464,2026-03-21,Service Issue,Open
+C13503,2026-03-13,Service Issue,Under Review
+C13513,2026-03-12,Unauthorized Charge,Resolved
+C13726,2026-03-20,Unauthorized Charge,Open
+C13746,2026-03-13,Unauthorized Charge,Open
+C13755,2026-03-20,Fee Complaint,Open
+C13767,2026-03-13,Service Issue,Resolved
+C13830,2026-03-15,Fee Complaint,Open
+C13917,2026-03-12,Service Issue,Under Review
+C13923,2026-03-18,Service Issue,Under Review
+C14154,2026-03-16,Fee Complaint,Open
+C14204,2026-03-18,Unauthorized Charge,Open
+C14238,2026-03-18,Unauthorized Charge,Resolved
+C14261,2026-03-21,Fee Complaint,Under Review
+C14350,2026-03-16,Unauthorized Charge,Under Review
+C14435,2026-03-21,Fee Complaint,Resolved
+C14584,2026-03-18,Fee Complaint,Open
+C14668,2026-03-14,Unauthorized Charge,Open
+C14673,2026-03-18,Unauthorized Charge,Resolved
+C14704,2026-03-16,Billing Dispute,Open
+C14733,2026-03-18,Billing Dispute,Under Review
+C14743,2026-03-15,Billing Dispute,Open
+C14752,2026-03-10,Billing Dispute,Resolved
+C14803,2026-03-22,Fee Complaint,Open
+C14831,2026-03-15,Service Issue,Open
+C14873,2026-03-14,Service Issue,Under Review
+C14982,2026-03-15,Billing Dispute,Open
+C15026,2026-03-13,Unauthorized Charge,Resolved
+C15034,2026-03-22,Unauthorized Charge,Under Review
+C15039,2026-03-15,Fee Complaint,Resolved
+C15154,2026-03-20,Unauthorized Charge,Resolved
+C15184,2026-03-12,Service Issue,Open
+C15190,2026-03-13,Fee Complaint,Open
+C15319,2026-03-10,Billing Dispute,Open
+C15344,2026-03-11,Service Issue,Resolved
+C15423,2026-03-21,Service Issue,Under Review
+C15434,2026-03-20,Fee Complaint,Under Review
+C15454,2026-03-10,Billing Dispute,Open
+C15460,2026-03-10,Billing Dispute,Open
+C15488,2026-03-23,Service Issue,Under Review
+C15522,2026-03-22,Billing Dispute,Open
+C15681,2026-03-10,Service Issue,Open
+C15730,2026-03-19,Fee Complaint,Open
+C15767,2026-03-17,Unauthorized Charge,Resolved
+C15861,2026-03-23,Unauthorized Charge,Under Review
+C15862,2026-03-17,Unauthorized Charge,Open
+C15998,2026-03-19,Fee Complaint,Resolved
+C16013,2026-03-13,Service Issue,Resolved
+C16049,2026-03-23,Fee Complaint,Under Review
+C16095,2026-03-18,Service Issue,Under Review
+C16099,2026-03-12,Fee Complaint,Resolved
+C16165,2026-03-11,Service Issue,Resolved
+C16181,2026-03-12,Unauthorized Charge,Resolved
+C16191,2026-03-23,Fee Complaint,Open
+C16209,2026-03-16,Service Issue,Resolved
+C16353,2026-03-19,Service Issue,Open
+C16384,2026-03-20,Service Issue,Resolved
+C16439,2026-03-17,Unauthorized Charge,Open
+C16463,2026-03-14,Fee Complaint,Open
+C16511,2026-03-18,Unauthorized Charge,Resolved
+C16540,2026-03-20,Fee Complaint,Open
+C16576,2026-03-23,Billing Dispute,Open
+C16621,2026-03-15,Fee Complaint,Open
+C16855,2026-03-15,Billing Dispute,Resolved
+C16871,2026-03-19,Fee Complaint,Open
+C16881,2026-03-19,Service Issue,Resolved
+C16940,2026-03-21,Fee Complaint,Under Review
+C16956,2026-03-10,Billing Dispute,Open
+C17154,2026-03-19,Unauthorized Charge,Resolved
+C17337,2026-03-22,Billing Dispute,Open
+C17383,2026-03-20,Fee Complaint,Resolved
+C17391,2026-03-20,Service Issue,Resolved
+C17517,2026-03-11,Billing Dispute,Resolved
+C17559,2026-03-23,Unauthorized Charge,Open
+C17563,2026-03-20,Unauthorized Charge,Resolved
+C17729,2026-03-20,Fee Complaint,Open
+C17743,2026-03-22,Billing Dispute,Open
+C17869,2026-03-21,Service Issue,Resolved
+C18048,2026-03-16,Unauthorized Charge,Resolved
+C18067,2026-03-23,Unauthorized Charge,Open
+C18117,2026-03-17,Fee Complaint,Open
+C18211,2026-03-19,Fee Complaint,Resolved
+C18229,2026-03-22,Service Issue,Open
+C18253,2026-03-19,Unauthorized Charge,Resolved
+C18301,2026-03-17,Billing Dispute,Open
+C18418,2026-03-22,Service Issue,Open
+C18429,2026-03-22,Billing Dispute,Open
+C18589,2026-03-16,Unauthorized Charge,Under Review
+C18607,2026-03-16,Service Issue,Open
+C18817,2026-03-14,Fee Complaint,Open
+C18871,2026-03-15,Service Issue,Open
+C18894,2026-03-20,Billing Dispute,Under Review
+C18928,2026-03-21,Fee Complaint,Open
+C18938,2026-03-18,Service Issue,Open
+C18983,2026-03-22,Unauthorized Charge,Open
+C19031,2026-03-19,Billing Dispute,Under Review
+C19083,2026-03-20,Fee Complaint,Open
+C19115,2026-03-20,Fee Complaint,Resolved
+C19123,2026-03-16,Billing Dispute,Open
+C19148,2026-03-21,Fee Complaint,Open
+C19160,2026-03-21,Billing Dispute,Open
+C19222,2026-03-10,Service Issue,Resolved
+C19228,2026-03-15,Service Issue,Open
+C19265,2026-03-20,Fee Complaint,Under Review
+C19295,2026-03-20,Unauthorized Charge,Resolved
+C19345,2026-03-23,Fee Complaint,Open
+C19351,2026-03-10,Unauthorized Charge,Resolved
+C19459,2026-03-23,Billing Dispute,Under Review
+C19478,2026-03-17,Fee Complaint,Open
+C19517,2026-03-12,Billing Dispute,Resolved
+C19527,2026-03-14,Fee Complaint,Open
+C19542,2026-03-20,Unauthorized Charge,Resolved
+C19621,2026-03-11,Service Issue,Resolved
+C19702,2026-03-14,Service Issue,Resolved
+C19724,2026-03-22,Service Issue,Open
+C19728,2026-03-11,Service Issue,Under Review
+C19801,2026-03-19,Fee Complaint,Under Review
+C19893,2026-03-16,Unauthorized Charge,Under Review
+C19946,2026-03-10,Unauthorized Charge,Under Review
+C19955,2026-03-10,Fee Complaint,Resolved
+C19989,2026-03-17,Billing Dispute,Resolved
+C19995,2026-03-18,Service Issue,Resolved
+C20001,2026-03-18,Service Issue,Under Review
+C20005,2026-03-13,Unauthorized Charge,Under Review
+C20027,2026-03-10,Unauthorized Charge,Open
+C20157,2026-03-18,Unauthorized Charge,Open
+C20252,2026-03-14,Billing Dispute,Under Review
+C20281,2026-03-19,Billing Dispute,Under Review
+C20282,2026-03-15,Fee Complaint,Under Review
+C20396,2026-03-19,Fee Complaint,Open
+C20414,2026-03-11,Billing Dispute,Under Review
+C20457,2026-03-20,Unauthorized Charge,Under Review
+C20549,2026-03-20,Fee Complaint,Open
+C20552,2026-03-22,Unauthorized Charge,Open
+C20584,2026-03-20,Unauthorized Charge,Open
+C20613,2026-03-13,Fee Complaint,Under Review
+C20701,2026-03-20,Fee Complaint,Resolved
+C20796,2026-03-12,Unauthorized Charge,Resolved
+C20838,2026-03-15,Unauthorized Charge,Open
+C20927,2026-03-19,Service Issue,Under Review
+C21093,2026-03-22,Fee Complaint,Resolved
+C21099,2026-03-23,Service Issue,Open
+C21139,2026-03-11,Unauthorized Charge,Resolved
+C21156,2026-03-16,Unauthorized Charge,Resolved
+C21286,2026-03-20,Unauthorized Charge,Open
+C21478,2026-03-17,Fee Complaint,Open
+C21533,2026-03-16,Fee Complaint,Resolved
+C21576,2026-03-18,Service Issue,Open
+C21648,2026-03-21,Service Issue,Under Review
+C21698,2026-03-11,Service Issue,Open
+C21810,2026-03-10,Service Issue,Under Review
+C21904,2026-03-22,Unauthorized Charge,Open
+C21934,2026-03-11,Service Issue,Resolved
+C22009,2026-03-20,Service Issue,Open
+C22019,2026-03-23,Service Issue,Under Review
+C22177,2026-03-14,Unauthorized Charge,Under Review
+C22219,2026-03-17,Billing Dispute,Open
+C22309,2026-03-20,Unauthorized Charge,Under Review
+C22314,2026-03-10,Billing Dispute,Open
+C22379,2026-03-23,Unauthorized Charge,Open
+C22417,2026-03-21,Fee Complaint,Open
+C22455,2026-03-15,Service Issue,Open
+C22500,2026-03-22,Unauthorized Charge,Resolved
+C22583,2026-03-22,Service Issue,Open
+C22623,2026-03-10,Fee Complaint,Open
+C22694,2026-03-20,Fee Complaint,Open
+C22862,2026-03-21,Billing Dispute,Under Review
+C22869,2026-03-22,Service Issue,Open
+C22925,2026-03-13,Unauthorized Charge,Resolved
+C22930,2026-03-14,Fee Complaint,Resolved
+C23089,2026-03-20,Billing Dispute,Open
+C23205,2026-03-10,Service Issue,Resolved
+C23282,2026-03-12,Fee Complaint,Resolved
+C23357,2026-03-21,Fee Complaint,Resolved
+C23397,2026-03-23,Unauthorized Charge,Open
+C23488,2026-03-13,Fee Complaint,Resolved
+C23520,2026-03-11,Unauthorized Charge,Under Review
+C23739,2026-03-23,Fee Complaint,Resolved
+C23806,2026-03-10,Fee Complaint,Open
+C23823,2026-03-18,Billing Dispute,Open
+C23881,2026-03-14,Fee Complaint,Open
+C23971,2026-03-11,Fee Complaint,Open
+C24012,2026-03-20,Unauthorized Charge,Under Review
+C24061,2026-03-17,Unauthorized Charge,Open
+C24234,2026-03-12,Unauthorized Charge,Open
+C24394,2026-03-17,Fee Complaint,Open
+C24396,2026-03-13,Billing Dispute,Open
+C24465,2026-03-16,Service Issue,Resolved
+C24491,2026-03-14,Unauthorized Charge,Under Review
+C24499,2026-03-17,Service Issue,Resolved
+C24587,2026-03-17,Fee Complaint,Resolved
+C24603,2026-03-22,Fee Complaint,Under Review
+C24625,2026-03-18,Billing Dispute,Under Review
+C24844,2026-03-18,Unauthorized Charge,Resolved
+C24888,2026-03-21,Billing Dispute,Open
+C24948,2026-03-10,Billing Dispute,Open
+C25075,2026-03-17,Unauthorized Charge,Open
+C25132,2026-03-11,Billing Dispute,Open
+C25152,2026-03-12,Billing Dispute,Open
+C25207,2026-03-14,Service Issue,Under Review
+C25267,2026-03-22,Unauthorized Charge,Resolved
+C25351,2026-03-21,Unauthorized Charge,Open
+C25489,2026-03-10,Fee Complaint,Under Review
+C25617,2026-03-10,Billing Dispute,Open
+C25623,2026-03-17,Unauthorized Charge,Open
+C25702,2026-03-15,Service Issue,Open
+C25817,2026-03-10,Service Issue,Open
+C25854,2026-03-14,Billing Dispute,Under Review
+C25891,2026-03-15,Fee Complaint,Resolved
+C26099,2026-03-21,Billing Dispute,Open
+C26228,2026-03-11,Billing Dispute,Open
+C26321,2026-03-22,Service Issue,Under Review
+C26382,2026-03-10,Billing Dispute,Open
+C26526,2026-03-11,Fee Complaint,Under Review
+C26536,2026-03-12,Billing Dispute,Open
+C26551,2026-03-15,Billing Dispute,Open
+C26553,2026-03-11,Service Issue,Under Review
+C26733,2026-03-10,Billing Dispute,Under Review
+C26766,2026-03-15,Service Issue,Open
+C27156,2026-03-17,Billing Dispute,Open
+C27173,2026-03-23,Fee Complaint,Open
+C27192,2026-03-10,Billing Dispute,Open
+C27213,2026-03-10,Unauthorized Charge,Under Review
+C27239,2026-03-16,Billing Dispute,Resolved
+C27255,2026-03-21,Service Issue,Open
+C27305,2026-03-21,Service Issue,Open
+C27317,2026-03-17,Billing Dispute,Open
+C27328,2026-03-19,Fee Complaint,Resolved
+C27347,2026-03-13,Fee Complaint,Resolved
+C27411,2026-03-15,Fee Complaint,Under Review
+C27527,2026-03-11,Fee Complaint,Under Review
+C27648,2026-03-15,Fee Complaint,Open
+C27755,2026-03-15,Fee Complaint,Open
+C27924,2026-03-11,Service Issue,Open
+C27955,2026-03-22,Unauthorized Charge,Under Review
+C27993,2026-03-22,Fee Complaint,Resolved
+C28017,2026-03-17,Unauthorized Charge,Under Review
+C28100,2026-03-23,Unauthorized Charge,Resolved
+C28105,2026-03-20,Service Issue,Open
+C28125,2026-03-17,Billing Dispute,Resolved
+C28311,2026-03-10,Billing Dispute,Under Review
+C28507,2026-03-17,Billing Dispute,Open
+C28561,2026-03-23,Billing Dispute,Resolved
+C28571,2026-03-19,Fee Complaint,Resolved
+C28643,2026-03-16,Fee Complaint,Under Review
+C28700,2026-03-20,Fee Complaint,Open
+C28779,2026-03-17,Service Issue,Open
+C28848,2026-03-21,Service Issue,Under Review
+C28892,2026-03-18,Service Issue,Under Review
+C28902,2026-03-16,Fee Complaint,Resolved
+C28908,2026-03-22,Unauthorized Charge,Under Review
+C28925,2026-03-10,Fee Complaint,Open
+C28944,2026-03-10,Fee Complaint,Open
+C28971,2026-03-18,Unauthorized Charge,Open
+C28999,2026-03-19,Billing Dispute,Open
+C29171,2026-03-22,Billing Dispute,Under Review
+C29177,2026-03-23,Service Issue,Open
+C29261,2026-03-13,Unauthorized Charge,Open
+C29277,2026-03-16,Fee Complaint,Under Review
+C29284,2026-03-11,Fee Complaint,Under Review
+C29374,2026-03-14,Unauthorized Charge,Under Review
+C29383,2026-03-18,Service Issue,Open
+C29384,2026-03-16,Fee Complaint,Resolved
+C29459,2026-03-11,Service Issue,Open
+C29566,2026-03-21,Fee Complaint,Under Review
+C29661,2026-03-13,Fee Complaint,Under Review
+C29696,2026-03-21,Billing Dispute,Open
+C29700,2026-03-22,Fee Complaint,Under Review
+C29703,2026-03-17,Billing Dispute,Open
+C29709,2026-03-23,Unauthorized Charge,Open
+C29722,2026-03-21,Billing Dispute,Resolved
+C29823,2026-03-14,Billing Dispute,Resolved
+C29911,2026-03-11,Billing Dispute,Resolved
+C29954,2026-03-15,Unauthorized Charge,Open
+C29957,2026-03-23,Service Issue,Open
+C30014,2026-03-10,Service Issue,Under Review
+C30055,2026-03-12,Fee Complaint,Open
+C30090,2026-03-20,Fee Complaint,Open
+C30215,2026-03-13,Fee Complaint,Open
+C30243,2026-03-22,Fee Complaint,Under Review
+C30302,2026-03-14,Unauthorized Charge,Resolved
+C30415,2026-03-19,Unauthorized Charge,Under Review
+C30513,2026-03-15,Billing Dispute,Under Review
+C30697,2026-03-11,Billing Dispute,Open
+C30712,2026-03-10,Service Issue,Resolved
+C30861,2026-03-16,Unauthorized Charge,Under Review
+C30989,2026-03-15,Unauthorized Charge,Resolved
+C31054,2026-03-12,Fee Complaint,Open
+C31190,2026-03-14,Unauthorized Charge,Under Review
+C31258,2026-03-22,Billing Dispute,Open
+C31271,2026-03-10,Billing Dispute,Open
+C31277,2026-03-16,Billing Dispute,Open
+C31386,2026-03-12,Unauthorized Charge,Resolved
+C31445,2026-03-12,Fee Complaint,Resolved
+C31588,2026-03-14,Unauthorized Charge,Under Review
+C31615,2026-03-22,Billing Dispute,Open
+C31677,2026-03-14,Fee Complaint,Open
+C31893,2026-03-11,Unauthorized Charge,Open
+C31905,2026-03-17,Fee Complaint,Resolved
+C31987,2026-03-21,Fee Complaint,Resolved
+C32009,2026-03-23,Unauthorized Charge,Under Review
+C32035,2026-03-22,Unauthorized Charge,Open
+C32042,2026-03-16,Fee Complaint,Resolved
+C32052,2026-03-14,Billing Dispute,Resolved
+C32090,2026-03-17,Billing Dispute,Under Review
+C32217,2026-03-20,Billing Dispute,Under Review
+C32225,2026-03-21,Unauthorized Charge,Resolved
+C32242,2026-03-10,Service Issue,Open
+C32267,2026-03-22,Service Issue,Open
+C32512,2026-03-21,Fee Complaint,Resolved
+C32540,2026-03-22,Billing Dispute,Open
+C32639,2026-03-23,Fee Complaint,Open
+C32695,2026-03-23,Billing Dispute,Under Review
+C32855,2026-03-10,Unauthorized Charge,Under Review
+C32876,2026-03-13,Service Issue,Open
+C32904,2026-03-21,Unauthorized Charge,Under Review
+C33004,2026-03-22,Service Issue,Open
+C33058,2026-03-23,Service Issue,Open
+C33080,2026-03-11,Billing Dispute,Resolved
+C33262,2026-03-10,Fee Complaint,Open
+C33281,2026-03-19,Unauthorized Charge,Open
+C33295,2026-03-10,Unauthorized Charge,Open
+C33494,2026-03-22,Fee Complaint,Under Review
+C33495,2026-03-21,Service Issue,Resolved
+C33511,2026-03-14,Billing Dispute,Under Review
+C33535,2026-03-23,Fee Complaint,Under Review
+C33556,2026-03-13,Billing Dispute,Resolved
+C33606,2026-03-11,Fee Complaint,Under Review
+C33635,2026-03-15,Unauthorized Charge,Under Review
+C33643,2026-03-13,Fee Complaint,Resolved
+C33665,2026-03-11,Billing Dispute,Under Review
+C33745,2026-03-13,Unauthorized Charge,Open
+C33750,2026-03-20,Fee Complaint,Open
+C33762,2026-03-12,Billing Dispute,Open
+C34073,2026-03-22,Service Issue,Open
+C34121,2026-03-21,Service Issue,Resolved
+C34173,2026-03-21,Billing Dispute,Open
+C34331,2026-03-19,Unauthorized Charge,Under Review
+C34352,2026-03-14,Billing Dispute,Resolved
+C34456,2026-03-17,Fee Complaint,Open
+C34529,2026-03-13,Unauthorized Charge,Open
+C34530,2026-03-16,Service Issue,Under Review
+C34603,2026-03-21,Fee Complaint,Open
+C34621,2026-03-18,Service Issue,Open
+C34736,2026-03-23,Unauthorized Charge,Resolved
+C34748,2026-03-21,Fee Complaint,Resolved
+C34765,2026-03-13,Fee Complaint,Under Review
+C34854,2026-03-16,Billing Dispute,Under Review
+C34855,2026-03-12,Fee Complaint,Under Review
+C34930,2026-03-11,Billing Dispute,Open
+C34965,2026-03-10,Billing Dispute,Under Review
+C35050,2026-03-17,Service Issue,Resolved
+C35217,2026-03-18,Billing Dispute,Open
+C35299,2026-03-21,Billing Dispute,Resolved
+C35334,2026-03-19,Billing Dispute,Open
+C35446,2026-03-17,Service Issue,Open
+C35481,2026-03-13,Unauthorized Charge,Under Review
+C35496,2026-03-11,Unauthorized Charge,Under Review
+C35517,2026-03-23,Service Issue,Resolved
+C35540,2026-03-11,Billing Dispute,Open
+C35645,2026-03-21,Unauthorized Charge,Under Review
+C35687,2026-03-15,Fee Complaint,Open
+C35724,2026-03-17,Service Issue,Resolved
+C35735,2026-03-12,Unauthorized Charge,Resolved
+C35743,2026-03-23,Unauthorized Charge,Under Review
+C35765,2026-03-23,Fee Complaint,Open
+C35822,2026-03-16,Fee Complaint,Resolved
+C35861,2026-03-14,Billing Dispute,Under Review
+C35990,2026-03-10,Billing Dispute,Resolved
+C36010,2026-03-19,Unauthorized Charge,Open
+C36101,2026-03-10,Billing Dispute,Under Review
+C36203,2026-03-17,Unauthorized Charge,Open
+C36208,2026-03-15,Billing Dispute,Open
+C36243,2026-03-20,Fee Complaint,Open
+C36251,2026-03-17,Service Issue,Resolved
+C36290,2026-03-23,Service Issue,Under Review
+C36308,2026-03-15,Fee Complaint,Open
+C36518,2026-03-15,Unauthorized Charge,Open
+C36576,2026-03-16,Billing Dispute,Under Review
+C36751,2026-03-11,Service Issue,Open
+C36762,2026-03-17,Unauthorized Charge,Open
+C36795,2026-03-15,Billing Dispute,Open
+C36819,2026-03-13,Fee Complaint,Open
+C36881,2026-03-18,Billing Dispute,Resolved
+C36935,2026-03-23,Service Issue,Open
+C37044,2026-03-12,Unauthorized Charge,Open
+C37048,2026-03-13,Unauthorized Charge,Under Review
+C37119,2026-03-17,Billing Dispute,Resolved
+C37462,2026-03-20,Billing Dispute,Under Review
+C37468,2026-03-22,Unauthorized Charge,Under Review
+C37480,2026-03-15,Service Issue,Open
+C37555,2026-03-21,Service Issue,Open
+C37564,2026-03-20,Service Issue,Under Review
+C37570,2026-03-21,Service Issue,Resolved
+C37599,2026-03-18,Service Issue,Resolved
+C37623,2026-03-15,Service Issue,Resolved
+C37691,2026-03-13,Unauthorized Charge,Open
+C37748,2026-03-18,Service Issue,Under Review
+C37790,2026-03-21,Fee Complaint,Open
+C37824,2026-03-15,Unauthorized Charge,Open
+C37866,2026-03-14,Service Issue,Open
+C37957,2026-03-21,Billing Dispute,Under Review
+C37959,2026-03-21,Billing Dispute,Resolved
+C37991,2026-03-11,Unauthorized Charge,Open
+C38186,2026-03-18,Fee Complaint,Resolved
+C38209,2026-03-22,Fee Complaint,Open
+C38213,2026-03-21,Billing Dispute,Resolved
+C38217,2026-03-11,Service Issue,Open
+C38272,2026-03-10,Fee Complaint,Resolved
+C38287,2026-03-17,Unauthorized Charge,Under Review
+C38376,2026-03-20,Service Issue,Open
+C38435,2026-03-16,Billing Dispute,Open
+C38474,2026-03-14,Unauthorized Charge,Open
+C38540,2026-03-13,Unauthorized Charge,Under Review
+C38702,2026-03-17,Service Issue,Under Review
+C38720,2026-03-10,Fee Complaint,Open
+C38791,2026-03-21,Service Issue,Open
+C38846,2026-03-14,Billing Dispute,Resolved
+C38984,2026-03-16,Unauthorized Charge,Open
+C39034,2026-03-14,Service Issue,Under Review
+C39052,2026-03-20,Unauthorized Charge,Resolved
+C39075,2026-03-19,Service Issue,Open
+C39134,2026-03-23,Unauthorized Charge,Open
+C39150,2026-03-12,Unauthorized Charge,Resolved
+C39157,2026-03-21,Unauthorized Charge,Under Review
+C39162,2026-03-10,Fee Complaint,Open
+C39219,2026-03-15,Unauthorized Charge,Open
+C39298,2026-03-16,Unauthorized Charge,Under Review
+C39531,2026-03-17,Service Issue,Open
+C39546,2026-03-19,Unauthorized Charge,Open
+C39549,2026-03-12,Service Issue,Open
+C39569,2026-03-15,Service Issue,Under Review
+C39581,2026-03-22,Service Issue,Under Review
+C39660,2026-03-11,Unauthorized Charge,Under Review
+C39723,2026-03-22,Billing Dispute,Open
+C39750,2026-03-14,Service Issue,Open
+C39802,2026-03-23,Unauthorized Charge,Under Review
+C39857,2026-03-10,Service Issue,Under Review
+C39892,2026-03-15,Unauthorized Charge,Open
+C39963,2026-03-17,Service Issue,Under Review
+C39992,2026-03-17,Service Issue,Under Review
+C40010,2026-03-19,Service Issue,Open
+C40050,2026-03-22,Service Issue,Open
+C40172,2026-03-22,Fee Complaint,Open
+C40185,2026-03-16,Unauthorized Charge,Resolved
+C40370,2026-03-15,Service Issue,Under Review
+C40384,2026-03-21,Billing Dispute,Open
+C40420,2026-03-18,Billing Dispute,Open
+C40502,2026-03-13,Service Issue,Open
+C40554,2026-03-16,Billing Dispute,Open
+C40572,2026-03-21,Billing Dispute,Resolved
+C40627,2026-03-23,Unauthorized Charge,Open
+C40657,2026-03-16,Billing Dispute,Open
+C40660,2026-03-17,Billing Dispute,Resolved
+C40782,2026-03-20,Unauthorized Charge,Under Review
+C40857,2026-03-21,Fee Complaint,Resolved
+C40866,2026-03-14,Unauthorized Charge,Under Review
+C40889,2026-03-20,Service Issue,Resolved
+C40995,2026-03-19,Fee Complaint,Open
+C41150,2026-03-22,Fee Complaint,Open
+C41268,2026-03-12,Unauthorized Charge,Open
+C41273,2026-03-14,Billing Dispute,Open
+C41286,2026-03-13,Billing Dispute,Open
+C41308,2026-03-12,Service Issue,Open
+C41442,2026-03-20,Service Issue,Open
+C41461,2026-03-13,Fee Complaint,Open
+C41492,2026-03-20,Unauthorized Charge,Open
+C41493,2026-03-14,Service Issue,Open
+C41629,2026-03-12,Service Issue,Open
+C41685,2026-03-17,Service Issue,Under Review
+C41731,2026-03-20,Fee Complaint,Open
+C41811,2026-03-21,Service Issue,Under Review
+C41846,2026-03-18,Fee Complaint,Resolved
+C41872,2026-03-13,Unauthorized Charge,Resolved
+C41887,2026-03-13,Billing Dispute,Open
+C41901,2026-03-20,Fee Complaint,Under Review
+C42116,2026-03-20,Billing Dispute,Resolved
+C42191,2026-03-16,Unauthorized Charge,Resolved
+C42209,2026-03-23,Unauthorized Charge,Open
+C42309,2026-03-17,Fee Complaint,Open
+C42339,2026-03-23,Service Issue,Resolved
+C42360,2026-03-15,Unauthorized Charge,Open
+C42385,2026-03-17,Service Issue,Under Review
+C42415,2026-03-21,Unauthorized Charge,Under Review
+C42513,2026-03-21,Fee Complaint,Open
+C42516,2026-03-16,Service Issue,Resolved
+C42615,2026-03-18,Unauthorized Charge,Open
+C42734,2026-03-16,Billing Dispute,Under Review
+C42868,2026-03-10,Fee Complaint,Resolved
+C43009,2026-03-19,Billing Dispute,Resolved
+C43048,2026-03-20,Fee Complaint,Open
+C43056,2026-03-23,Billing Dispute,Resolved
+C43064,2026-03-17,Billing Dispute,Open
+C43083,2026-03-22,Unauthorized Charge,Under Review
+C43094,2026-03-15,Unauthorized Charge,Open
+C43314,2026-03-19,Unauthorized Charge,Resolved
+C43384,2026-03-23,Service Issue,Open
+C43398,2026-03-20,Unauthorized Charge,Under Review
+C43427,2026-03-11,Billing Dispute,Open
+C43436,2026-03-13,Fee Complaint,Open
+C43461,2026-03-21,Service Issue,Under Review
+C43464,2026-03-11,Fee Complaint,Under Review
+C43477,2026-03-23,Fee Complaint,Open
+C43714,2026-03-21,Service Issue,Under Review
+C43816,2026-03-12,Fee Complaint,Under Review
+C43826,2026-03-12,Unauthorized Charge,Open
+C43868,2026-03-13,Fee Complaint,Under Review
+C43888,2026-03-22,Fee Complaint,Resolved
+C43898,2026-03-14,Billing Dispute,Open
+C44171,2026-03-18,Service Issue,Under Review
+C44238,2026-03-18,Fee Complaint,Open
+C44302,2026-03-15,Unauthorized Charge,Resolved
+C44327,2026-03-20,Fee Complaint,Open
+C44332,2026-03-12,Service Issue,Open
+C44391,2026-03-14,Billing Dispute,Open
+C44461,2026-03-17,Service Issue,Open
+C44540,2026-03-16,Fee Complaint,Open
+C44680,2026-03-22,Fee Complaint,Open
+C44727,2026-03-20,Billing Dispute,Open
+C44992,2026-03-18,Service Issue,Open
+C45095,2026-03-19,Service Issue,Resolved
+C45102,2026-03-22,Unauthorized Charge,Resolved
+C45137,2026-03-20,Service Issue,Under Review
+C45249,2026-03-20,Service Issue,Open
+C45348,2026-03-11,Unauthorized Charge,Open
+C45354,2026-03-23,Fee Complaint,Under Review
+C45379,2026-03-15,Billing Dispute,Open
+C45388,2026-03-10,Fee Complaint,Open
+C45400,2026-03-11,Fee Complaint,Under Review
+C45440,2026-03-22,Service Issue,Open
+C45474,2026-03-14,Unauthorized Charge,Open
+C45596,2026-03-17,Unauthorized Charge,Under Review
+C45630,2026-03-11,Fee Complaint,Open
+C45632,2026-03-23,Service Issue,Open
+C45766,2026-03-13,Unauthorized Charge,Open
+C45866,2026-03-21,Billing Dispute,Open
+C45897,2026-03-12,Service Issue,Open
+C45941,2026-03-20,Billing Dispute,Open
+C45978,2026-03-21,Unauthorized Charge,Resolved
+C46071,2026-03-23,Fee Complaint,Open
+C46083,2026-03-14,Billing Dispute,Open
+C46143,2026-03-22,Billing Dispute,Under Review
+C46168,2026-03-13,Unauthorized Charge,Resolved
+C46241,2026-03-21,Service Issue,Open
+C46256,2026-03-16,Fee Complaint,Open
+C46391,2026-03-21,Unauthorized Charge,Open
+C46403,2026-03-15,Billing Dispute,Resolved
+C46424,2026-03-22,Service Issue,Open
+C46433,2026-03-20,Service Issue,Open
+C46456,2026-03-17,Service Issue,Resolved
+C46547,2026-03-20,Billing Dispute,Under Review
+C46570,2026-03-12,Unauthorized Charge,Resolved
+C46592,2026-03-21,Billing Dispute,Resolved
+C46733,2026-03-17,Billing Dispute,Resolved
+C46879,2026-03-19,Unauthorized Charge,Under Review
+C46903,2026-03-14,Billing Dispute,Open
+C46952,2026-03-20,Fee Complaint,Under Review
+C46995,2026-03-17,Fee Complaint,Open
+C46999,2026-03-10,Service Issue,Open
+C47043,2026-03-23,Billing Dispute,Open
+C47100,2026-03-15,Fee Complaint,Resolved
+C47339,2026-03-13,Billing Dispute,Open
+C47376,2026-03-15,Billing Dispute,Open
+C47398,2026-03-11,Billing Dispute,Open
+C47404,2026-03-23,Service Issue,Open
+C47569,2026-03-15,Service Issue,Under Review
+C47596,2026-03-15,Service Issue,Under Review
+C47896,2026-03-19,Unauthorized Charge,Open
+C48023,2026-03-10,Billing Dispute,Open
+C48052,2026-03-17,Fee Complaint,Open
+C48103,2026-03-21,Billing Dispute,Open
+C48489,2026-03-15,Billing Dispute,Resolved
+C48556,2026-03-22,Fee Complaint,Open
+C48636,2026-03-12,Unauthorized Charge,Resolved
+C48682,2026-03-21,Unauthorized Charge,Under Review
+C48695,2026-03-23,Service Issue,Open
+C48778,2026-03-11,Service Issue,Open
+C48876,2026-03-10,Service Issue,Open
+C48893,2026-03-18,Billing Dispute,Open
+C49051,2026-03-22,Billing Dispute,Resolved
+C49096,2026-03-11,Service Issue,Resolved
+C49131,2026-03-11,Unauthorized Charge,Open
+C49285,2026-03-11,Service Issue,Open
+C49300,2026-03-18,Unauthorized Charge,Resolved
+C49354,2026-03-13,Service Issue,Under Review
+C49384,2026-03-11,Unauthorized Charge,Under Review
+C49522,2026-03-21,Service Issue,Open
+C49525,2026-03-14,Fee Complaint,Under Review
+C49535,2026-03-16,Service Issue,Open
+C49553,2026-03-21,Unauthorized Charge,Open
+C49557,2026-03-18,Fee Complaint,Resolved
+C49596,2026-03-23,Fee Complaint,Resolved
+C49874,2026-03-23,Service Issue,Open
+C49907,2026-03-23,Unauthorized Charge,Open
+C50021,2026-03-17,Unauthorized Charge,Under Review
+C50251,2026-03-22,Unauthorized Charge,Under Review
+C50257,2026-03-15,Billing Dispute,Resolved
+C50336,2026-03-17,Service Issue,Open
+C50467,2026-03-17,Billing Dispute,Under Review
+C50648,2026-03-15,Billing Dispute,Under Review
+C50668,2026-03-18,Service Issue,Under Review
+C50839,2026-03-19,Billing Dispute,Resolved
+C50960,2026-03-12,Service Issue,Open
+C50992,2026-03-13,Fee Complaint,Open
+C51090,2026-03-17,Billing Dispute,Open
+C51301,2026-03-17,Fee Complaint,Under Review
+C51377,2026-03-11,Service Issue,Open
+C51398,2026-03-21,Service Issue,Open
+C51413,2026-03-19,Service Issue,Open
+C51509,2026-03-10,Fee Complaint,Under Review
+C51526,2026-03-10,Service Issue,Open
+C51560,2026-03-19,Unauthorized Charge,Open
+C51595,2026-03-15,Fee Complaint,Resolved
+C51622,2026-03-20,Billing Dispute,Resolved
+C51662,2026-03-12,Billing Dispute,Open
+C51671,2026-03-17,Unauthorized Charge,Open
+C51673,2026-03-21,Service Issue,Open
+C51696,2026-03-12,Fee Complaint,Under Review
+C51808,2026-03-12,Billing Dispute,Under Review
+C51866,2026-03-17,Unauthorized Charge,Open
+C51876,2026-03-23,Billing Dispute,Resolved
+C51930,2026-03-11,Billing Dispute,Under Review
+C51931,2026-03-12,Fee Complaint,Open
+C51947,2026-03-22,Unauthorized Charge,Under Review
+C52031,2026-03-22,Fee Complaint,Open
+C52080,2026-03-10,Fee Complaint,Under Review
+C52204,2026-03-13,Fee Complaint,Open
+C52300,2026-03-18,Unauthorized Charge,Under Review
+C52344,2026-03-10,Service Issue,Open
+C52488,2026-03-17,Billing Dispute,Under Review
+C52536,2026-03-18,Billing Dispute,Under Review
+C52582,2026-03-20,Service Issue,Open
+C52766,2026-03-16,Fee Complaint,Under Review
+C52790,2026-03-17,Unauthorized Charge,Under Review
+C53224,2026-03-15,Service Issue,Open
+C53278,2026-03-12,Service Issue,Under Review
+C53385,2026-03-20,Billing Dispute,Under Review
+C53450,2026-03-18,Billing Dispute,Resolved
+C53469,2026-03-14,Service Issue,Under Review
+C53472,2026-03-23,Unauthorized Charge,Open
+C53520,2026-03-10,Unauthorized Charge,Open
+C53590,2026-03-20,Billing Dispute,Open
+C53615,2026-03-11,Unauthorized Charge,Open
+C53665,2026-03-10,Unauthorized Charge,Under Review
+C53678,2026-03-12,Service Issue,Resolved
+C53703,2026-03-12,Billing Dispute,Open
+C53734,2026-03-11,Service Issue,Open
+C53744,2026-03-22,Fee Complaint,Resolved
+C53919,2026-03-12,Service Issue,Open
+C54021,2026-03-14,Billing Dispute,Open
+C54034,2026-03-14,Service Issue,Open
+C54185,2026-03-16,Billing Dispute,Open
+C54199,2026-03-17,Unauthorized Charge,Open
+C54333,2026-03-23,Fee Complaint,Open
+C54415,2026-03-12,Service Issue,Open
+C54454,2026-03-11,Fee Complaint,Under Review
+C54711,2026-03-17,Service Issue,Resolved
+C54735,2026-03-15,Fee Complaint,Open
+C54759,2026-03-23,Billing Dispute,Open
+C54866,2026-03-10,Service Issue,Open
+C54894,2026-03-14,Service Issue,Under Review
+C55005,2026-03-11,Fee Complaint,Open
+C55059,2026-03-15,Billing Dispute,Open
+C55113,2026-03-20,Fee Complaint,Under Review
+C55173,2026-03-16,Fee Complaint,Under Review
+C55224,2026-03-12,Unauthorized Charge,Open
+C55283,2026-03-12,Fee Complaint,Open
+C55324,2026-03-14,Billing Dispute,Resolved
+C55329,2026-03-18,Unauthorized Charge,Open
+C55450,2026-03-23,Service Issue,Under Review
+C55588,2026-03-14,Service Issue,Open
+C55687,2026-03-10,Unauthorized Charge,Open
+C55704,2026-03-15,Unauthorized Charge,Open
+C55738,2026-03-20,Fee Complaint,Resolved
+C55810,2026-03-18,Service Issue,Open
+C55904,2026-03-11,Fee Complaint,Open
+C55946,2026-03-21,Billing Dispute,Open
+C56000,2026-03-14,Billing Dispute,Open
+C56085,2026-03-20,Fee Complaint,Under Review
+C56117,2026-03-18,Unauthorized Charge,Resolved
+C56147,2026-03-22,Service Issue,Under Review
+C56180,2026-03-23,Unauthorized Charge,Open
+C56205,2026-03-15,Fee Complaint,Open
+C56348,2026-03-10,Unauthorized Charge,Open
+C56521,2026-03-11,Unauthorized Charge,Open
+C56553,2026-03-16,Fee Complaint,Resolved
+C56630,2026-03-17,Service Issue,Open
+C56640,2026-03-22,Billing Dispute,Resolved
+C56671,2026-03-11,Service Issue,Open
+C56767,2026-03-20,Service Issue,Open
+C56926,2026-03-18,Fee Complaint,Resolved
+C56929,2026-03-14,Service Issue,Open
+C56981,2026-03-17,Billing Dispute,Resolved
+C57011,2026-03-22,Unauthorized Charge,Open
+C57049,2026-03-22,Billing Dispute,Open
+C57062,2026-03-19,Unauthorized Charge,Under Review
+C57074,2026-03-23,Fee Complaint,Open
+C57327,2026-03-17,Service Issue,Resolved
+C57339,2026-03-13,Fee Complaint,Resolved
+C57352,2026-03-11,Billing Dispute,Open
+C57394,2026-03-15,Unauthorized Charge,Under Review
+C57463,2026-03-12,Service Issue,Open
+C57488,2026-03-20,Unauthorized Charge,Open
+C57966,2026-03-11,Fee Complaint,Open
+C58078,2026-03-18,Unauthorized Charge,Open
+C58208,2026-03-16,Billing Dispute,Resolved
+C58307,2026-03-23,Billing Dispute,Open
+C58343,2026-03-13,Unauthorized Charge,Open
+C58345,2026-03-23,Service Issue,Under Review
+C58359,2026-03-16,Service Issue,Open
+C58393,2026-03-15,Unauthorized Charge,Open
+C58519,2026-03-11,Unauthorized Charge,Under Review
+C58641,2026-03-14,Billing Dispute,Open
+C58644,2026-03-12,Fee Complaint,Under Review
+C58653,2026-03-14,Billing Dispute,Resolved
+C58691,2026-03-11,Fee Complaint,Resolved
+C58833,2026-03-10,Unauthorized Charge,Resolved
+C58863,2026-03-22,Unauthorized Charge,Open
+C58923,2026-03-15,Unauthorized Charge,Resolved
+C58948,2026-03-13,Billing Dispute,Open
+C58968,2026-03-18,Service Issue,Under Review
+C59011,2026-03-23,Unauthorized Charge,Open
+C59015,2026-03-21,Billing Dispute,Open
+C59241,2026-03-21,Billing Dispute,Under Review
+C59286,2026-03-11,Billing Dispute,Resolved
+C59414,2026-03-17,Service Issue,Resolved
+C59466,2026-03-14,Service Issue,Resolved
+C59517,2026-03-21,Fee Complaint,Open
+C59611,2026-03-16,Fee Complaint,Open
+C59629,2026-03-13,Fee Complaint,Open
+C59780,2026-03-12,Billing Dispute,Under Review
+C59828,2026-03-15,Billing Dispute,Open
+C59838,2026-03-18,Unauthorized Charge,Open
+C59947,2026-03-15,Billing Dispute,Open
+C59990,2026-03-10,Unauthorized Charge,Open

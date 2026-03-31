@@ -1,26 +1,175 @@
 @import "tailwindcss";
 
+html, body {
+  color-scheme: light !important;
+  background-color: #ffffff !important;
+}
+
+button, [role="button"], a {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --navy: #0F1235;
+  --light-navy: #171A42;
+  --teal: #0ba68f;
+  --teal-light: #e6f7f4;
+  --purple: #6B39D7;
+  --indigo: #4F46E5;
+  --dark-text: #051C31;
+  --body-text: #435565;
+  --ghost-white: #F6F9FC;
+  --error-red: #E5534B;
+  --border: rgba(67, 85, 101, 0.10);
+  --border-strong: rgba(67, 85, 101, 0.18);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: #ffffff;
+  --color-foreground: #051C31;
+  --color-navy: #0F1235;
+  --color-teal: #0ba68f;
+  --color-purple: #6B39D7;
+  --color-ghost: #F6F9FC;
+  --color-body: #435565;
+  --color-error: #E5534B;
+  --color-border: rgba(67, 85, 101, 0.10);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background: #ffffff;
+  color: var(--dark-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--body-text); }
+
+/* Chat input focus */
+.chat-input:focus { border-color: var(--navy) !important; box-shadow: 0 0 0 3px rgba(15, 18, 53, 0.08); }
+
+/* Strategy card */
+.strategy-card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
+.strategy-card:hover { border-color: var(--border-strong); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); }
+.strategy-card.selected { border-color: var(--navy); box-shadow: 0 0 0 1px var(--navy); }
+
+/* Guardrail badge */
+.guardrail-badge {
+  background: rgba(229, 83, 75, 0.04);
+  border: 1px solid rgba(229, 83, 75, 0.10);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 13px;
+}
+
+/* AI message bubble */
+.ai-message { background: var(--ghost-white); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; font-size: 14px; line-height: 1.6; }
+.user-message { background: #fff; border: 1px solid var(--border-strong); border-radius: 12px; padding: 14px 16px; font-size: 14px; line-height: 1.6; }
+
+/* Version dot */
+.version-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.version-dot.ai { background: var(--purple); }
+.version-dot.user { background: var(--navy); }
+
+/* Tags */
+.tag { display: inline-flex; align-items: center; padding: 3px 8px; border-radius: 9999px; font-size: 11px; font-weight: 600; letter-spacing: 0.01em; }
+.tag-teal { background: rgba(11, 166, 143, 0.08); color: var(--teal); }
+.tag-purple { background: rgba(107, 57, 215, 0.08); color: var(--purple); }
+.tag-red { background: rgba(229, 83, 75, 0.08); color: var(--error-red); }
+.tag-grey { background: rgba(67, 85, 101, 0.06); color: var(--body-text); }
+.tag-navy { background: rgba(15, 18, 53, 0.06); color: var(--navy); }
+
+/* Stat card */
+.stat-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+/* Global focus ring */
+button:focus-visible, a:focus-visible, input:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 2px;
+}
+
+/* Smooth transitions */
+button, a, input, select, textarea {
+  transition-duration: 150ms;
+  transition-timing-function: ease;
+}
+
+/* Loading shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, var(--ghost-white) 25%, #edf2f7 50%, var(--ghost-white) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease infinite;
+}
+
+/* Canvas transitions */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-fade-in-up { animation: fadeInUp 0.35s ease-out forwards; }
+.animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }
+.animate-scale-in { animation: scaleIn 0.3s ease-out forwards; }
+
+/* Staggered children */
+.stagger-children > * { opacity: 0; animation: fadeInUp 0.3s ease-out forwards; }
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 80ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 160ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 240ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 320ms; }
+
+/* Message animation */
+.ai-message, .user-message { animation: fadeInUp 0.25s ease-out forwards; }
+
+/* Pulse for analyzing state */
+@keyframes gentlePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.animate-gentle-pulse { animation: gentlePulse 2s ease-in-out infinite; }
+
+/* React Flow overrides */
+.react-flow__node { transition: none !important; }
+.react-flow__edge-path { transition: stroke 0.2s ease; }
+.react-flow__handle { opacity: 0 !important; width: 6px !important; height: 6px !important; }
+.react-flow__controls { border-radius: 8px !important; border: 1px solid var(--border) !important; box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important; overflow: hidden; }
+.react-flow__controls-button { border-color: var(--border) !important; width: 28px !important; height: 28px !important; }
+.react-flow__controls-button svg { width: 12px !important; height: 12px !important; }
+.react-flow__background { opacity: 0.4; }
+.react-flow__attribution { display: none !important; }
+.react-flow__panel { margin: 8px !important; }

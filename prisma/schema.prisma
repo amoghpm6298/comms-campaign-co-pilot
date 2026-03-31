@@ -1,0 +1,287 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// --- Multi-tenancy ---
+
+model Issuer {
+  id        String   @id @default(uuid())
+  name      String
+  slug      String   @unique
+  config    String?
+  createdAt DateTime @default(now())
+
+  userIssuers    UserIssuer[]
+  datasets       Dataset[]
+  templates      Template[]
+  campaigns      Campaign[]
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  password  String
+  createdAt DateTime @default(now())
+
+  userIssuers UserIssuer[]
+}
+
+model UserIssuer {
+  id        String   @id @default(uuid())
+  userId    String
+  issuerId  String
+  role      String   @default("marketer")
+  createdAt DateTime @default(now())
+
+  user   User   @relation(fields: [userId], references: [id])
+  issuer Issuer @relation(fields: [issuerId], references: [id])
+
+  @@unique([userId, issuerId])
+}
+
+model Dataset {
+  id               String   @id @default(uuid())
+  issuerId         String
+  title            String
+  description      String   @default("")
+  type             String
+  fileName         String
+  fileSize         Int
+  filePath         String   @default("")
+  rowCount         Int      @default(0)
+  columns          String   @default("[]")
+  sampleRows       String   @default("[]")
+  aggregations     String   @default("{}")
+  status           String   @default("enabled")
+  processingStatus String   @default("pending")
+  processingError  String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  createdBy        String   @default("")
+
+  issuer           Issuer   @relation(fields: [issuerId], references: [id])
+  campaignDatasets CampaignDataset[]
+}
+
+model Template {
+  id             String   @id @default(uuid())
+  issuerId       String
+  title          String
+  channel        String
+  type           String
+  description    String   @default("")
+  body           String
+  subject        String?
+  dltTemplateId  String?
+  headerType     String?
+  ctaText        String?
+  ctaUrl         String?
+  pushTitle      String?
+  pushImageUrl   String?
+  status         String   @default("draft")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  createdBy      String   @default("")
+
+  issuer         Issuer   @relation(fields: [issuerId], references: [id])
+  templateBriefs TemplateBrief[]
+  executions     Execution[]
+}
+
+model Campaign {
+  id                String   @id @default(uuid())
+  issuerId          String
+  name              String
+  goal              String   @default("")
+  goalContext       String   @default("")
+  mode              String   @default("v1")  // "v1" (upfront segmentation) | "v2" (wave pipeline)
+  status            String   @default("draft")
+  activeStrategyId  String?
+  activeVersion     Int      @default(0)
+  waveBlueprint     String   @default("{}") // JSON: AI's initial wave roadmap
+  globalExclusions  String   @default("[]") // JSON: segmentId[] for campaign-wide exclusions
+  goLiveAt          DateTime?
+  completedAt       DateTime?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  createdBy         String   @default("")
+
+  issuer           Issuer            @relation(fields: [issuerId], references: [id])
+  campaignDatasets CampaignDataset[]
+  strategies       Strategy[]
+  waves            Wave[]
+  versions         CampaignVersion[]
+  conversation     Conversation?
+  executions       Execution[]
+}
+
+model Wave {
+  id                  String   @id @default(uuid())
+  campaignId          String
+  waveNumber          Int
+  name                String   @default("")
+  status              String   @default("draft") // blueprint, draft, live, paused, completed
+  version             Int      @default(1)
+  journeyTree         String   @default("[]")    // JSON: JourneyTreeNode[] — full node tree
+  templateAssignments String   @default("{}")     // JSON: { nodeId: templateId }
+  audienceCount       Int      @default(0)
+  blueprint           String   @default("")       // Free text for blueprint waves
+  metrics             String   @default("{}")     // JSON: { sent, opened, clicked, converted }
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  campaign Campaign      @relation(fields: [campaignId], references: [id])
+  versions WaveVersion[]
+
+  @@unique([campaignId, waveNumber])
+}
+
+model WaveVersion {
+  id               String   @id @default(uuid())
+  waveId           String
+  version          Int
+  initiator        String   // "ai" | "user"
+  description      String
+  journeySnapshot  String   @default("[]") // JSON: snapshot of journeyTree at this version
+  createdAt        DateTime @default(now())
+
+  wave Wave @relation(fields: [waveId], references: [id])
+
+  @@unique([waveId, version])
+}
+
+model CampaignDataset {
+  id         String   @id @default(uuid())
+  campaignId String
+  datasetId  String
+  role       String
+  createdAt  DateTime @default(now())
+
+  campaign Campaign @relation(fields: [campaignId], references: [id])
+  dataset  Dataset  @relation(fields: [datasetId], references: [id])
+
+  @@unique([campaignId, datasetId])
+}
+
+model Strategy {
+  id              String   @id @default(uuid())
+  campaignId      String
+  name            String
+  approach        String   @default("")
+  recommended     Boolean  @default(false)
+  estimatedImpact String   @default("")
+  totalReach      Int      @default(0)
+  exclusions      String   @default("{}")
+  analysis        String   @default("{}")
+  reviewerFixes   String   @default("[]")
+  archived        Boolean  @default(false)
+  createdAt       DateTime @default(now())
+
+  campaign Campaign @relation(fields: [campaignId], references: [id])
+  paths    Path[]
+}
+
+model Path {
+  id                 String   @id @default(uuid())
+  strategyId         String
+  name               String
+  reasoning          String   @default("")
+  segmentDescription String   @default("")
+  segmentQuery       String   @default("{}")
+  segmentSize        Int      @default(0)
+  channels           String   @default("[]")
+  timing             String   @default("")
+  frequency          String   @default("")
+  evolution          String   @default("")
+  exitCondition      String   @default("")
+  sortOrder          Int      @default(0)
+  createdAt          DateTime @default(now())
+
+  strategy       Strategy        @relation(fields: [strategyId], references: [id])
+  steps          Step[]
+  templateBriefs TemplateBrief[]
+  executions     Execution[]
+}
+
+model Step {
+  id         String   @id @default(uuid())
+  pathId     String
+  channel    String
+  timing     String   @default("")
+  dayOffset  Int      @default(1)
+  brief      String   @default("")
+  sortOrder  Int      @default(0)
+  createdAt  DateTime @default(now())
+
+  path           Path            @relation(fields: [pathId], references: [id])
+  templateBriefs TemplateBrief[]
+}
+
+model TemplateBrief {
+  id                String   @id @default(uuid())
+  pathId            String
+  stepId            String?
+  channel           String
+  content           String
+  tone              String   @default("")
+  sortOrder         Int      @default(0)
+  linkedTemplateId  String?
+  createdAt         DateTime @default(now())
+
+  path     Path      @relation(fields: [pathId], references: [id])
+  step     Step?     @relation(fields: [stepId], references: [id])
+  template Template? @relation(fields: [linkedTemplateId], references: [id])
+}
+
+model CampaignVersion {
+  id               String   @id @default(uuid())
+  campaignId       String
+  version          Int
+  initiator        String
+  description      String
+  strategySnapshot String   @default("{}")
+  metricsSnapshot  String   @default("{}")
+  createdAt        DateTime @default(now())
+
+  campaign Campaign @relation(fields: [campaignId], references: [id])
+
+  @@unique([campaignId, version])
+}
+
+model Conversation {
+  id         String   @id @default(uuid())
+  campaignId String   @unique
+  messages   String   @default("[]")
+  agentState String   @default("{}")
+  mode       String   @default("creation")
+  updatedAt  DateTime @updatedAt
+
+  campaign Campaign @relation(fields: [campaignId], references: [id])
+}
+
+model Execution {
+  id             String    @id @default(uuid())
+  campaignId     String
+  pathId         String
+  templateId     String
+  name           String
+  channel        String
+  audienceCount  Int       @default(0)
+  scheduledAt    DateTime
+  sentAt         DateTime?
+  status         String    @default("scheduled")
+  archivedReason String?
+  metrics        String    @default("{}")
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  campaign Campaign @relation(fields: [campaignId], references: [id])
+  path     Path     @relation(fields: [pathId], references: [id])
+  template Template @relation(fields: [templateId], references: [id])
+}
