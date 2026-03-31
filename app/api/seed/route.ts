@@ -176,23 +176,53 @@ export async function POST(req: Request) {
         audienceCount: 4200,
         metrics: JSON.stringify({ sent: 4200, delivered: 3948, opened: 1422, clicked: 687, converted: 312 }),
         journeyTree: JSON.stringify([
-          { id: "seg-1", type: "segment", label: "Fresh Inactives (0-15d)", data: { count: 2100, condition: "card_type = 'Flipkart Axis Bank' AND activation_status = 'inactive' AND issue_date >= '2026-03-16'" }, children: ["rsplit-1"] },
-          { id: "rsplit-1", type: "random_split", label: "A/B Test: Activation Angle", data: { splits: [{ label: "Cashback Hook", pct: 50 }, { label: "Urgency Hook", pct: 50 }] }, children: ["send-1a", "send-1b"] },
-          { id: "send-1a", type: "send", label: "WhatsApp: Cashback Hook", data: { channel: "WhatsApp", timing: "Day 1, 10:00 AM", brief: "Cashback-led — activate and get 5% unlimited cashback on Flipkart, show ₹ amount on a sample ₹5K purchase" }, children: ["pause-1a"] },
-          { id: "pause-1a", type: "pause", label: "Wait 24 hours", data: { duration: "24h" }, children: ["send-2a"] },
-          { id: "send-2a", type: "send", label: "SMS: Cashback Reminder", data: { channel: "SMS", timing: "Day 2, 6:00 PM", brief: "Reinforce cashback — your ₹500 welcome cashback is waiting, activate in 30 seconds" }, children: ["exit-1a"] },
-          { id: "exit-1a", type: "exit", label: "Exit", data: {}, children: [] },
-          { id: "send-1b", type: "send", label: "SMS: Urgency Hook", data: { channel: "SMS", timing: "Day 1, 10:00 AM", brief: "Aggressive urgency — your Flipkart Axis card benefits expire in 72 hours, activate now or lose access" }, children: ["pause-1b"] },
-          { id: "pause-1b", type: "pause", label: "Wait 24 hours", data: { duration: "24h" }, children: ["send-2b"] },
-          { id: "send-2b", type: "send", label: "WhatsApp: Last Chance", data: { channel: "WhatsApp", timing: "Day 2, 11:00 AM", brief: "Visual countdown — 48 hours left, show card benefits they'll miss, one-tap activate button" }, children: ["exit-1b"] },
-          { id: "exit-1b", type: "exit", label: "Exit", data: {}, children: [] },
-          { id: "seg-2", type: "segment", label: "Stale Inactives (15-45d)", data: { count: 2100, condition: "card_type = 'Flipkart Axis Bank' AND activation_status = 'inactive' AND issue_date < '2026-03-16'" }, children: ["send-3"] },
-          { id: "send-3", type: "send", label: "SMS: Direct Activation CTA", data: { channel: "SMS", timing: "Day 1, 11:00 AM", brief: "Aggressive reactivation — your card has been inactive for X days, you've missed ₹Y in cashback, activate now before offer expires" }, children: ["pause-2"] },
-          { id: "pause-2", type: "pause", label: "Wait 2 days", data: { duration: "48h" }, children: ["send-4"] },
-          { id: "send-4", type: "send", label: "WhatsApp: Visual Benefits", data: { channel: "WhatsApp", timing: "Day 3, 10:00 AM", brief: "Rich media card showcase — top 5 benefits with amounts, exclusive Flipkart sale access, instant activation deeplink" }, children: ["pause-3"] },
-          { id: "pause-3", type: "pause", label: "Wait 2 days", data: { duration: "48h" }, children: ["send-5"] },
-          { id: "send-5", type: "send", label: "SMS: Final Push", data: { channel: "SMS", timing: "Day 5, 6:00 PM", brief: "Last chance — activation bonus expires tonight, one tap to activate, don't lose your card benefits permanently" }, children: ["exit-2"] },
-          { id: "exit-2", type: "exit", label: "Exit", data: {}, children: [] },
+          {
+            id: "seg-1", type: "segment", label: "Fresh Inactives (0-15d)",
+            config: { desc: "2,100 customers", detail: "card_type = 'Flipkart Axis Bank' AND activation_status = 'inactive' AND issue_date >= '2026-03-16'" },
+            branches: [{ label: "", nodes: [
+              {
+                id: "rsplit-1", type: "random_split", label: "A/B Test: Activation Angle",
+                config: { desc: "50/50 split" },
+                branches: [
+                  { label: "Cashback Hook (50%)", color: "green", nodes: [
+                    { id: "send-1a", type: "send", label: "WhatsApp: Cashback Hook", config: { channel: "WhatsApp", timing: "Day 1, 10:00 AM", desc: "Cashback-led — 5% unlimited cashback on Flipkart, show ₹ amount on sample ₹5K purchase" }, branches: [{ label: "", nodes: [
+                      { id: "pause-1a", type: "pause", label: "Wait 24 hours", config: { desc: "24h" }, branches: [{ label: "", nodes: [
+                        { id: "send-2a", type: "send", label: "SMS: Cashback Reminder", config: { channel: "SMS", timing: "Day 2, 6:00 PM", desc: "₹500 welcome cashback waiting, activate in 30 seconds" }, branches: [{ label: "", nodes: [
+                          { id: "exit-1a", type: "exit", label: "Exit", config: {} }
+                        ]}] }
+                      ]}] }
+                    ]}] }
+                  ]},
+                  { label: "Urgency Hook (50%)", color: "red", nodes: [
+                    { id: "send-1b", type: "send", label: "SMS: Urgency Hook", config: { channel: "SMS", timing: "Day 1, 10:00 AM", desc: "Benefits expire in 72 hours, activate now or lose access" }, branches: [{ label: "", nodes: [
+                      { id: "pause-1b", type: "pause", label: "Wait 24 hours", config: { desc: "24h" }, branches: [{ label: "", nodes: [
+                        { id: "send-2b", type: "send", label: "WhatsApp: Last Chance", config: { channel: "WhatsApp", timing: "Day 2, 11:00 AM", desc: "Visual countdown — 48 hours left, card benefits they'll miss" }, branches: [{ label: "", nodes: [
+                          { id: "exit-1b", type: "exit", label: "Exit", config: {} }
+                        ]}] }
+                      ]}] }
+                    ]}] }
+                  ]}
+                ]
+              }
+            ]}]
+          },
+          {
+            id: "seg-2", type: "segment", label: "Stale Inactives (15-45d)",
+            config: { desc: "2,100 customers", detail: "card_type = 'Flipkart Axis Bank' AND activation_status = 'inactive' AND issue_date < '2026-03-16'" },
+            branches: [{ label: "", nodes: [
+              { id: "send-3", type: "send", label: "SMS: Direct Activation CTA", config: { channel: "SMS", timing: "Day 1, 11:00 AM", desc: "Card inactive for X days, missed ₹Y in cashback, activate before offer expires" }, branches: [{ label: "", nodes: [
+                { id: "pause-2", type: "pause", label: "Wait 2 days", config: { desc: "48h" }, branches: [{ label: "", nodes: [
+                  { id: "send-4", type: "send", label: "WhatsApp: Visual Benefits", config: { channel: "WhatsApp", timing: "Day 3, 10:00 AM", desc: "Rich media — top 5 benefits, exclusive Flipkart sale access, instant activation deeplink" }, branches: [{ label: "", nodes: [
+                    { id: "pause-3", type: "pause", label: "Wait 2 days", config: { desc: "48h" }, branches: [{ label: "", nodes: [
+                      { id: "send-5", type: "send", label: "SMS: Final Push", config: { channel: "SMS", timing: "Day 5, 6:00 PM", desc: "Last chance — activation bonus expires tonight, one tap to activate" }, branches: [{ label: "", nodes: [
+                        { id: "exit-2", type: "exit", label: "Exit", config: {} }
+                      ]}] }
+                    ]}] }
+                  ]}] }
+                ]}] }
+              ]}] }
+            ]}]
+          },
         ]),
       },
     });
@@ -203,12 +233,24 @@ export async function POST(req: Request) {
         audienceCount: 2800,
         metrics: JSON.stringify({ sent: 2800, delivered: 2632, opened: 842, clicked: 394, converted: 178 }),
         journeyTree: JSON.stringify([
-          { id: "seg-1", type: "segment", label: "WhatsApp Non-Responders", data: { count: 1500, condition: "Received Wave 1 WhatsApp, did not activate" }, children: ["send-1"] },
-          { id: "send-1", type: "send", label: "SMS: Direct CTA", data: { channel: "SMS", timing: "Day 1, 11:00 AM", brief: "Short direct SMS — activate now, get ₹200 cashback on first txn" }, children: ["exit-1"] },
-          { id: "exit-1", type: "exit", label: "Exit", data: {}, children: [] },
-          { id: "seg-2", type: "segment", label: "Email Non-Openers", data: { count: 1300, condition: "Received Wave 1 Email, did not open" }, children: ["send-2"] },
-          { id: "send-2", type: "send", label: "WhatsApp: Visual Card Benefits", data: { channel: "WhatsApp", timing: "Day 1, 10:00 AM", brief: "Rich media WhatsApp — card image, top 3 benefits, activate button" }, children: ["exit-2"] },
-          { id: "exit-2", type: "exit", label: "Exit", data: {}, children: [] },
+          {
+            id: "seg-1", type: "segment", label: "WhatsApp Non-Responders",
+            config: { desc: "1,500 customers", detail: "Received Wave 1 WhatsApp, did not activate" },
+            branches: [{ label: "", nodes: [
+              { id: "send-1", type: "send", label: "SMS: Direct CTA", config: { channel: "SMS", timing: "Day 1, 11:00 AM", desc: "Activate now, get ₹200 cashback on first txn" }, branches: [{ label: "", nodes: [
+                { id: "exit-1", type: "exit", label: "Exit", config: {} }
+              ]}] }
+            ]}]
+          },
+          {
+            id: "seg-2", type: "segment", label: "Email Non-Openers",
+            config: { desc: "1,300 customers", detail: "Received Wave 1 Email, did not open" },
+            branches: [{ label: "", nodes: [
+              { id: "send-2", type: "send", label: "WhatsApp: Visual Card Benefits", config: { channel: "WhatsApp", timing: "Day 1, 10:00 AM", desc: "Rich media — card image, top 3 benefits, activate button" }, branches: [{ label: "", nodes: [
+                { id: "exit-2", type: "exit", label: "Exit", config: {} }
+              ]}] }
+            ]}]
+          },
         ]),
       },
     });
@@ -219,11 +261,19 @@ export async function POST(req: Request) {
         audienceCount: 1200,
         metrics: JSON.stringify({ sent: 1200, delivered: 1140 }),
         journeyTree: JSON.stringify([
-          { id: "seg-1", type: "segment", label: "High Credit Limit Inactives", data: { count: 1200, condition: "card_type = 'Flipkart Axis Bank' AND activation_status = 'inactive' AND credit_limit >= 200000" }, children: ["send-1"] },
-          { id: "send-1", type: "send", label: "WhatsApp: Premium Benefits", data: { channel: "WhatsApp", timing: "Day 1, 10:00 AM", brief: "Premium positioning — highlight higher cashback tier, priority support, exclusive Flipkart sale access" }, children: ["pause-1"] },
-          { id: "pause-1", type: "pause", label: "Wait 24 hours", data: { duration: "24h" }, children: ["send-2"] },
-          { id: "send-2", type: "send", label: "SMS: Personal Follow-up", data: { channel: "SMS", timing: "Day 2, 12:00 PM", brief: "Personal touch — your premium Flipkart card is waiting, activate for instant rewards" }, children: ["exit-1"] },
-          { id: "exit-1", type: "exit", label: "Exit", data: {}, children: [] },
+          {
+            id: "seg-1", type: "segment", label: "High Credit Limit Inactives",
+            config: { desc: "1,200 customers", detail: "card_type = 'Flipkart Axis Bank' AND activation_status = 'inactive' AND credit_limit >= 200000" },
+            branches: [{ label: "", nodes: [
+              { id: "send-1", type: "send", label: "WhatsApp: Premium Benefits", config: { channel: "WhatsApp", timing: "Day 1, 10:00 AM", desc: "Premium positioning — higher cashback tier, priority support, exclusive Flipkart sale access" }, branches: [{ label: "", nodes: [
+                { id: "pause-1", type: "pause", label: "Wait 24 hours", config: { desc: "24h" }, branches: [{ label: "", nodes: [
+                  { id: "send-2", type: "send", label: "SMS: Personal Follow-up", config: { channel: "SMS", timing: "Day 2, 12:00 PM", desc: "Your premium Flipkart card is waiting, activate for instant rewards" }, branches: [{ label: "", nodes: [
+                    { id: "exit-1", type: "exit", label: "Exit", config: {} }
+                  ]}] }
+                ]}] }
+              ]}] }
+            ]}]
+          },
         ]),
       },
     });
@@ -257,17 +307,41 @@ export async function POST(req: Request) {
         campaignId: c2.id, waveNumber: 1, name: "Festive Activation", status: "draft", version: 1,
         audienceCount: 7800,
         journeyTree: JSON.stringify([
-          { id: "seg-1", type: "segment", label: "Active High Spenders", data: { count: 3200, condition: "card_type = 'Ace' AND avg monthly spend > ₹25,000" }, children: ["send-1"] },
-          { id: "send-1", type: "send", label: "WhatsApp: Festive Cashback", data: { channel: "WhatsApp", timing: "Day 1, 10:00 AM", brief: "Festive season cashback accelerator — 2x rewards on electronics and fashion this week" }, children: ["pause-1"] },
-          { id: "pause-1", type: "pause", label: "Wait 3 days", data: { duration: "72h" }, children: ["send-2"] },
-          { id: "send-2", type: "send", label: "Email: Spend Dashboard", data: { channel: "Email", timing: "Day 4, 9:00 AM", brief: "Personal spend dashboard — show festive spend vs last year, reward points earned, unlock next tier" }, children: ["exit-1"] },
-          { id: "exit-1", type: "exit", label: "Exit", data: {}, children: [] },
-          { id: "seg-2", type: "segment", label: "Low-Frequency Ace Holders", data: { count: 4600, condition: "card_type = 'Ace' AND less than 3 txns in last 30 days" }, children: ["rsplit-1"] },
-          { id: "rsplit-1", type: "random_split", label: "A/B Test Messaging", data: { splits: [{ label: "Cashback Angle", pct: 50 }, { label: "FOMO Angle", pct: 50 }] }, children: ["send-3", "send-4"] },
-          { id: "send-3", type: "send", label: "SMS: Cashback Angle", data: { channel: "SMS", timing: "Day 1, 11:00 AM", brief: "Cashback-focused — earn 5% back on festive shopping, show ₹ amount they'd earn" }, children: ["exit-2"] },
-          { id: "send-4", type: "send", label: "SMS: FOMO Angle", data: { channel: "SMS", timing: "Day 1, 11:00 AM", brief: "FOMO-driven — Ace members spent ₹X crore this festive season, don't miss out" }, children: ["exit-3"] },
-          { id: "exit-2", type: "exit", label: "Exit", data: {}, children: [] },
-          { id: "exit-3", type: "exit", label: "Exit", data: {}, children: [] },
+          {
+            id: "seg-1", type: "segment", label: "Active High Spenders",
+            config: { desc: "3,200 customers", detail: "card_type = 'Ace' AND avg_monthly_spend > 25000" },
+            branches: [{ label: "", nodes: [
+              { id: "send-1", type: "send", label: "WhatsApp: Festive Cashback", config: { channel: "WhatsApp", timing: "Day 1, 10:00 AM", desc: "Festive cashback accelerator — 2x rewards on electronics and fashion this week" }, branches: [{ label: "", nodes: [
+                { id: "pause-1", type: "pause", label: "Wait 3 days", config: { desc: "72h" }, branches: [{ label: "", nodes: [
+                  { id: "send-2", type: "send", label: "Email: Spend Dashboard", config: { channel: "Email", timing: "Day 4, 9:00 AM", desc: "Personal spend dashboard — festive spend vs last year, reward points, unlock next tier" }, branches: [{ label: "", nodes: [
+                    { id: "exit-1", type: "exit", label: "Exit", config: {} }
+                  ]}] }
+                ]}] }
+              ]}] }
+            ]}]
+          },
+          {
+            id: "seg-2", type: "segment", label: "Low-Frequency Ace Holders",
+            config: { desc: "4,600 customers", detail: "card_type = 'Ace' AND txn_count_30d < 3" },
+            branches: [{ label: "", nodes: [
+              {
+                id: "rsplit-1", type: "random_split", label: "A/B Test Messaging",
+                config: { desc: "50/50 split" },
+                branches: [
+                  { label: "Cashback Angle (50%)", color: "green", nodes: [
+                    { id: "send-3", type: "send", label: "SMS: Cashback Angle", config: { channel: "SMS", timing: "Day 1, 11:00 AM", desc: "Earn 5% back on festive shopping, show ₹ amount they'd earn" }, branches: [{ label: "", nodes: [
+                      { id: "exit-2", type: "exit", label: "Exit", config: {} }
+                    ]}] }
+                  ]},
+                  { label: "FOMO Angle (50%)", color: "red", nodes: [
+                    { id: "send-4", type: "send", label: "SMS: FOMO Angle", config: { channel: "SMS", timing: "Day 1, 11:00 AM", desc: "Ace members earned ₹2.3Cr cashback this season. Your card has earned ₹0. Every day is money left on the table." }, branches: [{ label: "", nodes: [
+                      { id: "exit-3", type: "exit", label: "Exit", config: {} }
+                    ]}] }
+                  ]}
+                ]
+              }
+            ]}]
+          },
         ]),
       },
     });
@@ -299,14 +373,28 @@ export async function POST(req: Request) {
         audienceCount: 8500,
         metrics: JSON.stringify({ sent: 8500, delivered: 8075, opened: 3230, clicked: 1534, converted: 612 }),
         journeyTree: JSON.stringify([
-          { id: "seg-1", type: "segment", label: "High Utilization + EMI Eligible", data: { count: 5500, condition: "current_utilization > 70% AND emi_eligible = true AND outstanding_amount > 20000" }, children: ["send-1"] },
-          { id: "send-1", type: "send", label: "SMS: EMI Urgency", data: { channel: "SMS", timing: "Day 1, 10:00 AM", brief: "Payment due angle — convert ₹X to easy EMI before due date, save on interest" }, children: ["pause-1"] },
-          { id: "pause-1", type: "pause", label: "Wait 2 days", data: { duration: "48h" }, children: ["send-2"] },
-          { id: "send-2", type: "send", label: "WhatsApp: EMI Calculator", data: { channel: "WhatsApp", timing: "Day 3, 11:00 AM", brief: "Interactive EMI breakdown — show exact monthly amount for 3/6/9/12 month tenures" }, children: ["exit-1"] },
-          { id: "exit-1", type: "exit", label: "Exit", data: {}, children: [] },
-          { id: "seg-2", type: "segment", label: "Moderate Utilization + Past EMI", data: { count: 3000, condition: "current_utilization 40-70% AND past_emi_conversions > 0" }, children: ["send-3"] },
-          { id: "send-3", type: "send", label: "WhatsApp: Repeat EMI", data: { channel: "WhatsApp", timing: "Day 1, 10:00 AM", brief: "Repeat EMI user angle — you've done this before, same easy process, better rates this time" }, children: ["exit-2"] },
-          { id: "exit-2", type: "exit", label: "Exit", data: {}, children: [] },
+          {
+            id: "seg-1", type: "segment", label: "High Utilization + EMI Eligible",
+            config: { desc: "5,500 customers", detail: "current_utilization > 70% AND emi_eligible = true AND outstanding_amount > 20000" },
+            branches: [{ label: "", nodes: [
+              { id: "send-1", type: "send", label: "SMS: EMI Urgency", config: { channel: "SMS", timing: "Day 1, 10:00 AM", desc: "₹1.4L due in 5 days. Why pay full? Convert to ₹12,800/month. One tap →" }, branches: [{ label: "", nodes: [
+                { id: "pause-1", type: "pause", label: "Wait 2 days", config: { desc: "48h" }, branches: [{ label: "", nodes: [
+                  { id: "send-2", type: "send", label: "WhatsApp: EMI Calculator", config: { channel: "WhatsApp", timing: "Day 3, 11:00 AM", desc: "Interactive EMI breakdown — exact monthly amount for 3/6/9/12 month tenures" }, branches: [{ label: "", nodes: [
+                    { id: "exit-1", type: "exit", label: "Exit", config: {} }
+                  ]}] }
+                ]}] }
+              ]}] }
+            ]}]
+          },
+          {
+            id: "seg-2", type: "segment", label: "Moderate Utilization + Past EMI",
+            config: { desc: "3,000 customers", detail: "current_utilization BETWEEN 40 AND 70 AND past_emi_conversions > 0" },
+            branches: [{ label: "", nodes: [
+              { id: "send-3", type: "send", label: "WhatsApp: Repeat EMI", config: { channel: "WhatsApp", timing: "Day 1, 10:00 AM", desc: "You've done this before — same easy process, better rates this time" }, branches: [{ label: "", nodes: [
+                { id: "exit-2", type: "exit", label: "Exit", config: {} }
+              ]}] }
+            ]}]
+          },
         ]),
       },
     });
@@ -316,12 +404,24 @@ export async function POST(req: Request) {
         audienceCount: 5200,
         metrics: JSON.stringify({ sent: 5200, delivered: 4940, opened: 1976, clicked: 890, converted: 423 }),
         journeyTree: JSON.stringify([
-          { id: "seg-1", type: "segment", label: "Opened But Didn't Convert", data: { count: 2600, condition: "Opened Wave 1 message, did not convert to EMI" }, children: ["send-1"] },
-          { id: "send-1", type: "send", label: "Email: Detailed EMI Benefits", data: { channel: "Email", timing: "Day 1, 9:00 AM", brief: "Detailed comparison — full payment vs EMI, interest saved, credit limit freed up" }, children: ["exit-1"] },
-          { id: "exit-1", type: "exit", label: "Exit", data: {}, children: [] },
-          { id: "seg-2", type: "segment", label: "Didn't Open Wave 1", data: { count: 2600, condition: "Did not open Wave 1 message" }, children: ["send-2"] },
-          { id: "send-2", type: "send", label: "SMS: Simple CTA", data: { channel: "SMS", timing: "Day 1, 6:00 PM", brief: "Short and direct — ₹X outstanding, convert to ₹Y/month, one tap" }, children: ["exit-2"] },
-          { id: "exit-2", type: "exit", label: "Exit", data: {}, children: [] },
+          {
+            id: "seg-1", type: "segment", label: "Opened But Didn't Convert",
+            config: { desc: "2,600 customers", detail: "Opened Wave 1 message, did not convert to EMI" },
+            branches: [{ label: "", nodes: [
+              { id: "send-1", type: "send", label: "Email: Detailed EMI Benefits", config: { channel: "Email", timing: "Day 1, 9:00 AM", desc: "Full payment vs EMI comparison — interest saved, credit limit freed up" }, branches: [{ label: "", nodes: [
+                { id: "exit-1", type: "exit", label: "Exit", config: {} }
+              ]}] }
+            ]}]
+          },
+          {
+            id: "seg-2", type: "segment", label: "Didn't Open Wave 1",
+            config: { desc: "2,600 customers", detail: "Did not open Wave 1 message" },
+            branches: [{ label: "", nodes: [
+              { id: "send-2", type: "send", label: "SMS: Simple CTA", config: { channel: "SMS", timing: "Day 1, 6:00 PM", desc: "₹1.4L outstanding → ₹12,800/month. One tap." }, branches: [{ label: "", nodes: [
+                { id: "exit-2", type: "exit", label: "Exit", config: {} }
+              ]}] }
+            ]}]
+          },
         ]),
       },
     });

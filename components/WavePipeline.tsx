@@ -20,7 +20,7 @@ export interface WaveData {
   id: string;
   number: number;
   name: string;
-  status: "live" | "scheduled" | "draft" | "blueprint";
+  status: "live" | "scheduled" | "draft" | "blueprint" | "completed";
   version: number;
   segments: Segment[];
   blueprint?: string;
@@ -36,6 +36,7 @@ const statusConfig: Record<string, { bg: string; color: string; label: string; d
   scheduled: { bg: "rgba(21,101,192,0.08)", color: "#1565C0", label: "Scheduled", dot: "#1565C0" },
   draft: { bg: "rgba(74,111,165,0.08)", color: "#4A6FA5", label: "Draft", dot: "#4A6FA5" },
   blueprint: { bg: "rgba(107,57,215,0.06)", color: "#6b39d7", label: "Planned", dot: "#6b39d7" },
+  completed: { bg: "rgba(107,114,128,0.08)", color: "#6b7280", label: "Completed", dot: "#6b7280" },
 };
 
 // --- Wave list item ---
