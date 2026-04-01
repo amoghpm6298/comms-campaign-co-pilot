@@ -1,10 +1,27 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import bcrypt from "bcryptjs";
 
 // GET /api/seed — One-time seed for production
-export async function GET() {
+// GET /api/seed?campaigns=axis — Seed demo campaigns for Axis Bank
+export async function GET(req: NextRequest) {
   try {
+    // Campaign seeding shortcut: /api/seed?campaigns=axis
+    const campaignsParam = req.nextUrl.searchParams.get("campaigns");
+    if (campaignsParam) {
+      const slug = campaignsParam === "axis" ? "axis-bank" : campaignsParam;
+      const issuer = await prisma.issuer.findFirst({ where: { slug } });
+      if (!issuer) return NextResponse.json({ error: `Issuer '${slug}' not found. Run /api/issuers?seed=true first.` }, { status: 404 });
+
+      // Check if already seeded campaigns for this issuer
+      const existingCampaigns = await prisma.campaign.findFirst({ where: { issuerId: issuer.id } });
+      if (existingCampaigns) return NextResponse.json({ message: "Campaigns already seeded for " + issuer.name });
+
+      // Reuse POST handler logic
+      const result = await seedCampaigns(issuer.id);
+      return NextResponse.json(result);
+    }
+
     // Check if already seeded
     const existing = await prisma.issuer.findFirst();
     if (existing) {
@@ -154,14 +171,7 @@ export async function GET() {
 }
 
 // POST /api/seed — Seed demo campaigns for an issuer
-export async function POST(req: Request) {
-  try {
-    const { issuerId } = await req.json();
-    if (!issuerId) return NextResponse.json({ error: "issuerId required" }, { status: 400 });
-
-    const issuer = await prisma.issuer.findUnique({ where: { id: issuerId } });
-    if (!issuer) return NextResponse.json({ error: "Issuer not found" }, { status: 404 });
-
+async function seedCampaigns(issuerId: string) {
     // ── Campaign 1: Live with 3 waves (2 completed, 1 live) ──
     const c1 = await prisma.campaign.create({
       data: {
@@ -419,7 +429,19 @@ export async function POST(req: Request) {
       },
     });
 
-    return NextResponse.json({ message: "Demo campaigns created", campaigns: [c1.id, c2.id, c3.id] });
+    return { message: "Demo campaigns created", campaigns: [c1.id, c2.id, c3.id] };
+}
+
+export async function POST(req: Request) {
+  try {
+    const { issuerId } = await req.json();
+    if (!issuerId) return NextResponse.json({ error: "issuerId required" }, { status: 400 });
+
+    const issuer = await prisma.issuer.findUnique({ where: { id: issuerId } });
+    if (!issuer) return NextResponse.json({ error: "Issuer not found" }, { status: 404 });
+
+    const result = await seedCampaigns(issuerId);
+    return NextResponse.json(result);
   } catch (err) {
     console.error("Seed campaigns error:", err);
     return NextResponse.json({ error: "Failed", details: String(err) }, { status: 500 });
